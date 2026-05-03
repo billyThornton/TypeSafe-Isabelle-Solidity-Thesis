@@ -1,0 +1,1280 @@
+%
+\begin{isabellebody}%
+\setisabellecontext{Storage}%
+%
+\isadelimdocument
+%
+\endisadelimdocument
+%
+\isatagdocument
+%
+\isamarkupsection{Storage%
+}
+\isamarkuptrue%
+%
+\endisatagdocument
+{\isafolddocument}%
+%
+\isadelimdocument
+%
+\endisadelimdocument
+%
+\isadelimtheory
+%
+\endisadelimtheory
+%
+\isatagtheory
+\isacommand{theory}\isamarkupfalse%
+\ Storage\isanewline
+\isakeyword{imports}\ Valuetypes\ Finite{\isacharunderscore}{\kern0pt}Map{\isacharunderscore}{\kern0pt}Extras\isanewline
+\isanewline
+\isakeyword{begin}%
+\endisatagtheory
+{\isafoldtheory}%
+%
+\isadelimtheory
+%
+\endisadelimtheory
+%
+\isadelimdocument
+%
+\endisadelimdocument
+%
+\isatagdocument
+%
+\isamarkupsubsection{Hashing%
+}
+\isamarkuptrue%
+%
+\endisatagdocument
+{\isafolddocument}%
+%
+\isadelimdocument
+%
+\endisadelimdocument
+\isacommand{definition}\isamarkupfalse%
+\ hash\ {\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}Location\ {\isasymRightarrow}\ String{\isachardot}{\kern0pt}literal\ {\isasymRightarrow}\ Location{\isachardoublequoteclose}\isanewline
+\ \ \isakeyword{where}\ {\isachardoublequoteopen}hash\ loc\ ix\ {\isacharequal}{\kern0pt}\ ix\ {\isacharplus}{\kern0pt}\ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isachardot}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}\ {\isacharplus}{\kern0pt}\ loc{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{declare}\isamarkupfalse%
+\ hash{\isacharunderscore}{\kern0pt}def\ {\isacharbrackleft}{\kern0pt}solidity{\isacharunderscore}{\kern0pt}symbex{\isacharbrackright}{\kern0pt}\isanewline
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ example{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}hash\ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{1}}{\isachardot}{\kern0pt}{\isadigit{0}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{2}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isacharequal}{\kern0pt}\ hash\ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{0}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{2}}{\isachardot}{\kern0pt}{\isadigit{1}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}%
+\isadelimproof
+\ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ eval%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+\isanewline
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ hash{\isacharunderscore}{\kern0pt}explode{\isacharcolon}{\kern0pt}\isanewline
+\ \ {\isachardoublequoteopen}String{\isachardot}{\kern0pt}explode\ {\isacharparenleft}{\kern0pt}hash\ l\ i{\isacharparenright}{\kern0pt}\ {\isacharequal}{\kern0pt}\ String{\isachardot}{\kern0pt}explode\ i\ {\isacharat}{\kern0pt}\ {\isacharparenleft}{\kern0pt}String{\isachardot}{\kern0pt}explode\ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isachardot}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isacharat}{\kern0pt}\ String{\isachardot}{\kern0pt}explode\ l{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{unfolding}\isamarkupfalse%
+\ hash{\isacharunderscore}{\kern0pt}def\ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}{\kern0pt}simp\ add{\isacharcolon}{\kern0pt}\ plus{\isacharunderscore}{\kern0pt}literal{\isachardot}{\kern0pt}rep{\isacharunderscore}{\kern0pt}eq{\isacharparenright}{\kern0pt}%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ hash{\isacharunderscore}{\kern0pt}dot{\isacharcolon}{\kern0pt}\isanewline
+\ \ {\isachardoublequoteopen}String{\isachardot}{\kern0pt}explode\ {\isacharparenleft}{\kern0pt}hash\ l\ i{\isacharparenright}{\kern0pt}\ {\isacharbang}{\kern0pt}\ length\ {\isacharparenleft}{\kern0pt}String{\isachardot}{\kern0pt}explode\ i{\isacharparenright}{\kern0pt}\ {\isacharequal}{\kern0pt}\ CHR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isachardot}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{unfolding}\isamarkupfalse%
+\ hash{\isacharunderscore}{\kern0pt}def\ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}{\kern0pt}simp\ add{\isacharcolon}{\kern0pt}\ Literal{\isachardot}{\kern0pt}rep{\isacharunderscore}{\kern0pt}eq\ plus{\isacharunderscore}{\kern0pt}literal{\isachardot}{\kern0pt}rep{\isacharunderscore}{\kern0pt}eq{\isacharparenright}{\kern0pt}%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ hash{\isacharunderscore}{\kern0pt}injective{\isacharcolon}{\kern0pt}\isanewline
+\ \ \isakeyword{assumes}\ {\isachardoublequoteopen}hash\ l\ i\ {\isacharequal}{\kern0pt}\ hash\ l{\isacharprime}{\kern0pt}\ i{\isacharprime}{\kern0pt}{\isachardoublequoteclose}\isanewline
+\ \ \ \ \isakeyword{and}\ {\isachardoublequoteopen}CHR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isachardot}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}\ {\isasymnotin}\ set\ {\isacharparenleft}{\kern0pt}String{\isachardot}{\kern0pt}explode\ i{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+\ \ \ \ \isakeyword{and}\ {\isachardoublequoteopen}CHR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isachardot}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}\ {\isasymnotin}\ set\ {\isacharparenleft}{\kern0pt}String{\isachardot}{\kern0pt}explode\ i{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+\ \ \isakeyword{shows}\ {\isachardoublequoteopen}l\ {\isacharequal}{\kern0pt}\ l{\isacharprime}{\kern0pt}\ {\isasymand}\ i\ {\isacharequal}{\kern0pt}\ i{\isacharprime}{\kern0pt}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\isatagproof
+\isacommand{proof}\isamarkupfalse%
+\ {\isacharparenleft}{\kern0pt}rule\ ccontr{\isacharparenright}{\kern0pt}\isanewline
+\ \ \isacommand{assume}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymnot}\ {\isacharparenleft}{\kern0pt}l\ {\isacharequal}{\kern0pt}\ l{\isacharprime}{\kern0pt}\ {\isasymand}\ i\ {\isacharequal}{\kern0pt}\ i{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\ \isanewline
+\ \ \isacommand{then}\isamarkupfalse%
+\ \isacommand{consider}\isamarkupfalse%
+\ {\isacharparenleft}{\kern0pt}{\isadigit{1}}{\isacharparenright}{\kern0pt}\ {\isachardoublequoteopen}i{\isasymnoteq}i{\isacharprime}{\kern0pt}{\isachardoublequoteclose}\ {\isacharbar}{\kern0pt}\ {\isacharparenleft}{\kern0pt}{\isadigit{2}}{\isacharparenright}{\kern0pt}\ {\isachardoublequoteopen}i{\isacharequal}{\kern0pt}i{\isacharprime}{\kern0pt}\ {\isasymand}\ l{\isasymnoteq}l{\isacharprime}{\kern0pt}{\isachardoublequoteclose}\ \isacommand{by}\isamarkupfalse%
+\ auto\isanewline
+\ \ \isacommand{then}\isamarkupfalse%
+\ \isacommand{have}\isamarkupfalse%
+\ {\isachardoublequoteopen}String{\isachardot}{\kern0pt}explode\ {\isacharparenleft}{\kern0pt}hash\ l\ i{\isacharparenright}{\kern0pt}\ {\isasymnoteq}\ String{\isachardot}{\kern0pt}explode\ {\isacharparenleft}{\kern0pt}hash\ l{\isacharprime}{\kern0pt}\ i{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+\ \ \isacommand{proof}\isamarkupfalse%
+\ cases\isanewline
+\ \ \ \ \isacommand{case}\isamarkupfalse%
+\ {\isadigit{1}}\isanewline
+\ \ \ \ \isacommand{then}\isamarkupfalse%
+\ \isacommand{have}\isamarkupfalse%
+\ neq{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}{\isacharparenleft}{\kern0pt}String{\isachardot}{\kern0pt}explode\ i{\isacharparenright}{\kern0pt}\ {\isasymnoteq}\ {\isacharparenleft}{\kern0pt}String{\isachardot}{\kern0pt}explode\ i{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}{\kern0pt}metis\ literal{\isachardot}{\kern0pt}explode{\isacharunderscore}{\kern0pt}inverse{\isacharparenright}{\kern0pt}\isanewline
+\isanewline
+\ \ \ \ \isacommand{consider}\isamarkupfalse%
+\ {\isacharparenleft}{\kern0pt}{\isadigit{1}}{\isacharparenright}{\kern0pt}\ {\isachardoublequoteopen}length\ {\isacharparenleft}{\kern0pt}String{\isachardot}{\kern0pt}explode\ i{\isacharparenright}{\kern0pt}\ {\isacharequal}{\kern0pt}\ length\ {\isacharparenleft}{\kern0pt}String{\isachardot}{\kern0pt}explode\ i{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\ {\isacharbar}{\kern0pt}\ {\isacharparenleft}{\kern0pt}{\isadigit{2}}{\isacharparenright}{\kern0pt}\ {\isachardoublequoteopen}length\ {\isacharparenleft}{\kern0pt}String{\isachardot}{\kern0pt}explode\ i{\isacharparenright}{\kern0pt}\ {\isacharless}{\kern0pt}\ length\ {\isacharparenleft}{\kern0pt}String{\isachardot}{\kern0pt}explode\ i{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\ {\isacharbar}{\kern0pt}\ {\isacharparenleft}{\kern0pt}{\isadigit{3}}{\isacharparenright}{\kern0pt}\ {\isachardoublequoteopen}length\ {\isacharparenleft}{\kern0pt}String{\isachardot}{\kern0pt}explode\ i{\isacharparenright}{\kern0pt}\ {\isachargreater}{\kern0pt}\ length\ {\isacharparenleft}{\kern0pt}String{\isachardot}{\kern0pt}explode\ i{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\ \isacommand{by}\isamarkupfalse%
+\ linarith\isanewline
+\ \ \ \ \isacommand{then}\isamarkupfalse%
+\ \isacommand{show}\isamarkupfalse%
+\ {\isacharquery}{\kern0pt}thesis\isanewline
+\ \ \ \ \isacommand{proof}\isamarkupfalse%
+\ {\isacharparenleft}{\kern0pt}cases{\isacharparenright}{\kern0pt}\isanewline
+\ \ \ \ \ \ \isacommand{case}\isamarkupfalse%
+\ {\isadigit{1}}\isanewline
+\ \ \ \ \ \ \isacommand{then}\isamarkupfalse%
+\ \isacommand{obtain}\isamarkupfalse%
+\ j\ \isakeyword{where}\ {\isachardoublequoteopen}String{\isachardot}{\kern0pt}explode\ i\ {\isacharbang}{\kern0pt}\ j\ {\isasymnoteq}\ String{\isachardot}{\kern0pt}explode\ i{\isacharprime}{\kern0pt}\ {\isacharbang}{\kern0pt}\ j{\isachardoublequoteclose}\ \isacommand{using}\isamarkupfalse%
+\ neq\ nth{\isacharunderscore}{\kern0pt}equalityI\ \isacommand{by}\isamarkupfalse%
+\ auto\isanewline
+\ \ \ \ \ \ \isacommand{then}\isamarkupfalse%
+\ \isacommand{show}\isamarkupfalse%
+\ {\isacharquery}{\kern0pt}thesis\ \isacommand{using}\isamarkupfalse%
+\ {\isadigit{1}}\ plus{\isacharunderscore}{\kern0pt}literal{\isachardot}{\kern0pt}rep{\isacharunderscore}{\kern0pt}eq\ \isacommand{unfolding}\isamarkupfalse%
+\ hash{\isacharunderscore}{\kern0pt}def\ \isacommand{by}\isamarkupfalse%
+\ force\isanewline
+\ \ \ \ \isacommand{next}\isamarkupfalse%
+\isanewline
+\ \ \ \ \ \ \isacommand{case}\isamarkupfalse%
+\ {\isadigit{2}}\isanewline
+\ \ \ \ \ \ \isacommand{then}\isamarkupfalse%
+\ \isacommand{have}\isamarkupfalse%
+\ {\isachardoublequoteopen}String{\isachardot}{\kern0pt}explode\ i{\isacharprime}{\kern0pt}\ {\isacharbang}{\kern0pt}\ length\ {\isacharparenleft}{\kern0pt}String{\isachardot}{\kern0pt}explode\ i{\isacharparenright}{\kern0pt}\ {\isasymnoteq}\ CHR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isachardot}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isachardoublequoteclose}\ \isacommand{using}\isamarkupfalse%
+\ assms{\isacharparenleft}{\kern0pt}{\isadigit{3}}{\isacharparenright}{\kern0pt}\ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}{\kern0pt}metis\ nth{\isacharunderscore}{\kern0pt}mem{\isacharparenright}{\kern0pt}\isanewline
+\ \ \ \ \ \ \isacommand{then}\isamarkupfalse%
+\ \isacommand{have}\isamarkupfalse%
+\ {\isachardoublequoteopen}String{\isachardot}{\kern0pt}explode\ {\isacharparenleft}{\kern0pt}hash\ l{\isacharprime}{\kern0pt}\ i{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isacharbang}{\kern0pt}\ length\ {\isacharparenleft}{\kern0pt}String{\isachardot}{\kern0pt}explode\ i{\isacharparenright}{\kern0pt}\ {\isasymnoteq}\ CHR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isachardot}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isachardoublequoteclose}\ \isacommand{using}\isamarkupfalse%
+\ {\isadigit{2}}\ hash{\isacharunderscore}{\kern0pt}explode{\isacharbrackleft}{\kern0pt}of\ l{\isacharprime}{\kern0pt}\ i{\isacharprime}{\kern0pt}{\isacharbrackright}{\kern0pt}\ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}{\kern0pt}simp\ add{\isacharcolon}{\kern0pt}\ nth{\isacharunderscore}{\kern0pt}append{\isacharparenright}{\kern0pt}\isanewline
+\ \ \ \ \ \ \isacommand{moreover}\isamarkupfalse%
+\ \isacommand{have}\isamarkupfalse%
+\ {\isachardoublequoteopen}String{\isachardot}{\kern0pt}explode\ {\isacharparenleft}{\kern0pt}hash\ l\ i{\isacharparenright}{\kern0pt}\ {\isacharbang}{\kern0pt}\ length\ {\isacharparenleft}{\kern0pt}String{\isachardot}{\kern0pt}explode\ i{\isacharparenright}{\kern0pt}\ {\isacharequal}{\kern0pt}\ CHR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isachardot}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isachardoublequoteclose}\ \isacommand{using}\isamarkupfalse%
+\ hash{\isacharunderscore}{\kern0pt}dot\ \isacommand{by}\isamarkupfalse%
+\ simp\isanewline
+\ \ \ \ \ \ \isacommand{ultimately}\isamarkupfalse%
+\ \isacommand{show}\isamarkupfalse%
+\ {\isacharquery}{\kern0pt}thesis\ \isacommand{by}\isamarkupfalse%
+\ auto\isanewline
+\ \ \ \ \isacommand{next}\isamarkupfalse%
+\isanewline
+\ \ \ \ \ \ \isacommand{case}\isamarkupfalse%
+\ {\isadigit{3}}\isanewline
+\ \ \ \ \ \ \isacommand{then}\isamarkupfalse%
+\ \isacommand{have}\isamarkupfalse%
+\ {\isachardoublequoteopen}String{\isachardot}{\kern0pt}explode\ i\ {\isacharbang}{\kern0pt}\ length\ {\isacharparenleft}{\kern0pt}String{\isachardot}{\kern0pt}explode\ i{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isasymnoteq}\ CHR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isachardot}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isachardoublequoteclose}\ \isacommand{using}\isamarkupfalse%
+\ assms{\isacharparenleft}{\kern0pt}{\isadigit{2}}{\isacharparenright}{\kern0pt}\ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}{\kern0pt}metis\ nth{\isacharunderscore}{\kern0pt}mem{\isacharparenright}{\kern0pt}\isanewline
+\ \ \ \ \ \ \isacommand{then}\isamarkupfalse%
+\ \isacommand{have}\isamarkupfalse%
+\ {\isachardoublequoteopen}String{\isachardot}{\kern0pt}explode\ {\isacharparenleft}{\kern0pt}hash\ l\ i{\isacharparenright}{\kern0pt}\ {\isacharbang}{\kern0pt}\ length\ {\isacharparenleft}{\kern0pt}String{\isachardot}{\kern0pt}explode\ i{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isasymnoteq}\ CHR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isachardot}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isachardoublequoteclose}\ \isacommand{using}\isamarkupfalse%
+\ {\isadigit{3}}\ hash{\isacharunderscore}{\kern0pt}explode{\isacharbrackleft}{\kern0pt}of\ l\ i{\isacharbrackright}{\kern0pt}\ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}{\kern0pt}simp\ add{\isacharcolon}{\kern0pt}\ nth{\isacharunderscore}{\kern0pt}append{\isacharparenright}{\kern0pt}\isanewline
+\ \ \ \ \ \ \isacommand{moreover}\isamarkupfalse%
+\ \isacommand{have}\isamarkupfalse%
+\ {\isachardoublequoteopen}String{\isachardot}{\kern0pt}explode\ {\isacharparenleft}{\kern0pt}hash\ l{\isacharprime}{\kern0pt}\ i{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isacharbang}{\kern0pt}\ length\ {\isacharparenleft}{\kern0pt}String{\isachardot}{\kern0pt}explode\ i{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isacharequal}{\kern0pt}\ CHR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isachardot}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isachardoublequoteclose}\ \isacommand{using}\isamarkupfalse%
+\ hash{\isacharunderscore}{\kern0pt}dot\ \isacommand{by}\isamarkupfalse%
+\ simp\isanewline
+\ \ \ \ \ \ \isacommand{ultimately}\isamarkupfalse%
+\ \isacommand{show}\isamarkupfalse%
+\ {\isacharquery}{\kern0pt}thesis\ \isacommand{by}\isamarkupfalse%
+\ auto\isanewline
+\ \ \ \ \isacommand{qed}\isamarkupfalse%
+\isanewline
+\ \ \isacommand{next}\isamarkupfalse%
+\isanewline
+\ \ \ \ \isacommand{case}\isamarkupfalse%
+\ {\isadigit{2}}\isanewline
+\ \ \ \ \isacommand{then}\isamarkupfalse%
+\ \isacommand{show}\isamarkupfalse%
+\ {\isacharquery}{\kern0pt}thesis\ \isacommand{using}\isamarkupfalse%
+\ hash{\isacharunderscore}{\kern0pt}explode\ literal{\isachardot}{\kern0pt}explode{\isacharunderscore}{\kern0pt}inject\ \isacommand{by}\isamarkupfalse%
+\ force\isanewline
+\ \ \isacommand{qed}\isamarkupfalse%
+\isanewline
+\ \ \isacommand{then}\isamarkupfalse%
+\ \isacommand{show}\isamarkupfalse%
+\ False\ \isacommand{using}\isamarkupfalse%
+\ assms{\isacharparenleft}{\kern0pt}{\isadigit{1}}{\isacharparenright}{\kern0pt}\ \isacommand{by}\isamarkupfalse%
+\ simp\isanewline
+\isacommand{qed}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\isadelimdocument
+%
+\endisadelimdocument
+%
+\isatagdocument
+%
+\isamarkupsubsection{General Store%
+}
+\isamarkuptrue%
+%
+\endisatagdocument
+{\isafolddocument}%
+%
+\isadelimdocument
+%
+\endisadelimdocument
+\isacommand{record}\isamarkupfalse%
+\ {\isacharprime}{\kern0pt}v\ Store\ {\isacharequal}{\kern0pt}\isanewline
+\ \ mapping\ {\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}{\isacharparenleft}{\kern0pt}Location{\isacharcomma}{\kern0pt}{\isacharprime}{\kern0pt}v{\isacharparenright}{\kern0pt}\ fmap{\isachardoublequoteclose}\isanewline
+\ \ toploc\ {\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}\ nat\ \isanewline
+\isanewline
+\isacommand{definition}\isamarkupfalse%
+\ accessStore\ {\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}Location\ {\isasymRightarrow}\ {\isacharprime}{\kern0pt}v\ Store\ {\isasymRightarrow}\ {\isacharprime}{\kern0pt}v\ option{\isachardoublequoteclose}\isanewline
+\isakeyword{where}\ {\isachardoublequoteopen}accessStore\ loc\ st\ {\isacharequal}{\kern0pt}\ fmlookup\ {\isacharparenleft}{\kern0pt}mapping\ st{\isacharparenright}{\kern0pt}\ loc{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{declare}\isamarkupfalse%
+\ accessStore{\isacharunderscore}{\kern0pt}def{\isacharbrackleft}{\kern0pt}solidity{\isacharunderscore}{\kern0pt}symbex{\isacharbrackright}{\kern0pt}\isanewline
+\isanewline
+\isacommand{definition}\isamarkupfalse%
+\ emptyStore\ {\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}{\isacharprime}{\kern0pt}v\ Store{\isachardoublequoteclose}\isanewline
+\ \ \isakeyword{where}\ {\isachardoublequoteopen}emptyStore\ {\isacharequal}{\kern0pt}\ {\isasymlparr}\ mapping{\isacharequal}{\kern0pt}fmempty{\isacharcomma}{\kern0pt}\ toploc{\isacharequal}{\kern0pt}{\isadigit{0}}\ {\isasymrparr}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{declare}\isamarkupfalse%
+\ emptyStore{\isacharunderscore}{\kern0pt}def\ {\isacharbrackleft}{\kern0pt}solidity{\isacharunderscore}{\kern0pt}symbex{\isacharbrackright}{\kern0pt}\isanewline
+\isanewline
+\isacommand{definition}\isamarkupfalse%
+\ allocate\ {\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}{\isacharprime}{\kern0pt}v\ Store\ {\isasymRightarrow}\ Location\ {\isacharasterisk}{\kern0pt}\ {\isacharparenleft}{\kern0pt}{\isacharprime}{\kern0pt}v\ Store{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+\isakeyword{where}\ {\isachardoublequoteopen}allocate\ s\ {\isacharequal}{\kern0pt}\ {\isacharparenleft}{\kern0pt}let\ ntop\ {\isacharequal}{\kern0pt}\ Suc{\isacharparenleft}{\kern0pt}toploc\ s{\isacharparenright}{\kern0pt}\ in\ {\isacharparenleft}{\kern0pt}ShowL\isactrlsub n\isactrlsub a\isactrlsub t\ ntop{\isacharcomma}{\kern0pt}\ s\ {\isasymlparr}toploc\ {\isacharcolon}{\kern0pt}{\isacharequal}{\kern0pt}\ ntop{\isasymrparr}{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isanewline
+\isanewline
+\isacommand{definition}\isamarkupfalse%
+\ updateStore\ {\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}Location\ {\isasymRightarrow}\ {\isacharprime}{\kern0pt}v\ {\isasymRightarrow}\ {\isacharprime}{\kern0pt}v\ Store\ {\isasymRightarrow}\ {\isacharprime}{\kern0pt}v\ Store{\isachardoublequoteclose}\isanewline
+\isakeyword{where}\ {\isachardoublequoteopen}updateStore\ loc\ val\ s\ {\isacharequal}{\kern0pt}\ s\ {\isasymlparr}\ mapping\ {\isacharcolon}{\kern0pt}{\isacharequal}{\kern0pt}\ fmupd\ loc\ val\ {\isacharparenleft}{\kern0pt}mapping\ s{\isacharparenright}{\kern0pt}{\isasymrparr}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{declare}\isamarkupfalse%
+\ updateStore{\isacharunderscore}{\kern0pt}def\ {\isacharbrackleft}{\kern0pt}solidity{\isacharunderscore}{\kern0pt}symbex{\isacharbrackright}{\kern0pt}\isanewline
+\isanewline
+\isacommand{definition}\isamarkupfalse%
+\ push\ {\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}{\isacharprime}{\kern0pt}v\ {\isasymRightarrow}\ {\isacharprime}{\kern0pt}v\ Store\ {\isasymRightarrow}\ {\isacharprime}{\kern0pt}v\ Store{\isachardoublequoteclose}\isanewline
+\ \ \isakeyword{where}\ {\isachardoublequoteopen}push\ val\ sto\ {\isacharequal}{\kern0pt}\ {\isacharparenleft}{\kern0pt}let\ s\ {\isacharequal}{\kern0pt}\ updateStore\ {\isacharparenleft}{\kern0pt}ShowL\isactrlsub n\isactrlsub a\isactrlsub t\ {\isacharparenleft}{\kern0pt}toploc\ sto{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}\ val\ sto\ in\ snd\ {\isacharparenleft}{\kern0pt}allocate\ s{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{declare}\isamarkupfalse%
+\ push{\isacharunderscore}{\kern0pt}def\ {\isacharbrackleft}{\kern0pt}solidity{\isacharunderscore}{\kern0pt}symbex{\isacharbrackright}{\kern0pt}%
+\isadelimdocument
+%
+\endisadelimdocument
+%
+\isatagdocument
+%
+\isamarkupsubsection{Stack%
+}
+\isamarkuptrue%
+%
+\endisatagdocument
+{\isafolddocument}%
+%
+\isadelimdocument
+%
+\endisadelimdocument
+\isacommand{datatype}\isamarkupfalse%
+\ Stackvalue\ {\isacharequal}{\kern0pt}\ KValue\ Valuetype\isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ {\isacharbar}{\kern0pt}\ KCDptr\ Location\isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ {\isacharbar}{\kern0pt}\ KMemptr\ Location\isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ {\isacharbar}{\kern0pt}\ KStoptr\ Location\isanewline
+\isanewline
+\isacommand{type{\isacharunderscore}{\kern0pt}synonym}\isamarkupfalse%
+\ Stack\ {\isacharequal}{\kern0pt}\ {\isachardoublequoteopen}Stackvalue\ Store{\isachardoublequoteclose}%
+\isadelimdocument
+%
+\endisadelimdocument
+%
+\isatagdocument
+%
+\isamarkupsubsection{Storage%
+}
+\isamarkuptrue%
+%
+\isamarkupsubsubsection{Definition%
+}
+\isamarkuptrue%
+%
+\endisatagdocument
+{\isafolddocument}%
+%
+\isadelimdocument
+%
+\endisadelimdocument
+\isacommand{type{\isacharunderscore}{\kern0pt}synonym}\isamarkupfalse%
+\ Storagevalue\ {\isacharequal}{\kern0pt}\ Valuetype\isanewline
+\isanewline
+\isacommand{type{\isacharunderscore}{\kern0pt}synonym}\isamarkupfalse%
+\ StorageT\ {\isacharequal}{\kern0pt}\ {\isachardoublequoteopen}{\isacharparenleft}{\kern0pt}Location{\isacharcomma}{\kern0pt}Storagevalue{\isacharparenright}{\kern0pt}\ fmap{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{datatype}\isamarkupfalse%
+\ STypes\ {\isacharequal}{\kern0pt}\ STArray\ int\ STypes\isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ {\isacharbar}{\kern0pt}\ STMap\ Types\ STypes\isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ {\isacharbar}{\kern0pt}\ STValue\ Types%
+\isadelimdocument
+%
+\endisadelimdocument
+%
+\isatagdocument
+%
+\isamarkupsubsubsection{Example%
+}
+\isamarkuptrue%
+%
+\endisatagdocument
+{\isafolddocument}%
+%
+\isadelimdocument
+%
+\endisadelimdocument
+\isacommand{abbreviation}\isamarkupfalse%
+\ mystorage{\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}StorageT\isanewline
+\isakeyword{where}\ {\isachardoublequoteopen}mystorage\ {\isasymequiv}\ {\isacharparenleft}{\kern0pt}fmap{\isacharunderscore}{\kern0pt}of{\isacharunderscore}{\kern0pt}list\isanewline
+\ \ {\isacharbrackleft}{\kern0pt}{\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{0}}{\isachardot}{\kern0pt}{\isadigit{0}}{\isachardot}{\kern0pt}{\isadigit{0}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharcomma}{\kern0pt}\ STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}False{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isacharcomma}{\kern0pt}\isanewline
+\ \ \ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{1}}{\isachardot}{\kern0pt}{\isadigit{1}}{\isachardot}{\kern0pt}{\isadigit{0}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharcomma}{\kern0pt}\ STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}True{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isacharbrackright}{\kern0pt}{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}%
+\isadelimdocument
+%
+\endisadelimdocument
+%
+\isatagdocument
+%
+\isamarkupsubsubsection{Access storage%
+}
+\isamarkuptrue%
+%
+\endisatagdocument
+{\isafolddocument}%
+%
+\isadelimdocument
+%
+\endisadelimdocument
+\isacommand{definition}\isamarkupfalse%
+\ accessStorage\ {\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}Types\ {\isasymRightarrow}\ Location\ {\isasymRightarrow}\ StorageT\ {\isasymRightarrow}\ Storagevalue{\isachardoublequoteclose}\isanewline
+\isakeyword{where}\isanewline
+\ \ {\isachardoublequoteopen}accessStorage\ t\ loc\ sto\ {\isacharequal}{\kern0pt}\isanewline
+\ \ \ \ {\isacharparenleft}{\kern0pt}case\ sto\ {\isachardollar}{\kern0pt}{\isachardollar}{\kern0pt}\ loc\ of\isanewline
+\ \ \ \ \ \ Some\ v\ {\isasymRightarrow}\ v\isanewline
+\ \ \ \ {\isacharbar}{\kern0pt}\ None\ {\isasymRightarrow}\ ival\ t{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{declare}\isamarkupfalse%
+\ accessStorage{\isacharunderscore}{\kern0pt}def\ {\isacharbrackleft}{\kern0pt}solidity{\isacharunderscore}{\kern0pt}symbex{\isacharbrackright}{\kern0pt}%
+\isadelimdocument
+%
+\endisadelimdocument
+%
+\isatagdocument
+%
+\isamarkupsubsubsection{Copy from storage to storage%
+}
+\isamarkuptrue%
+%
+\endisatagdocument
+{\isafolddocument}%
+%
+\isadelimdocument
+%
+\endisadelimdocument
+\isacommand{primrec}\isamarkupfalse%
+\ copyRec\ {\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}Location\ {\isasymRightarrow}\ Location\ {\isasymRightarrow}\ STypes\ {\isasymRightarrow}\ StorageT\ {\isasymRightarrow}\ StorageT\ option{\isachardoublequoteclose}\isanewline
+\isakeyword{where}\isanewline
+\ \ {\isachardoublequoteopen}copyRec\ l\isactrlsub s\ l\isactrlsub d\ {\isacharparenleft}{\kern0pt}STArray\ x\ t{\isacharparenright}{\kern0pt}\ sto\ {\isacharequal}{\kern0pt}\isanewline
+\ \ \ \ iter{\isacharprime}{\kern0pt}\ {\isacharparenleft}{\kern0pt}{\isasymlambda}i\ s{\isacharprime}{\kern0pt}{\isachardot}{\kern0pt}\ copyRec\ {\isacharparenleft}{\kern0pt}hash\ l\isactrlsub s\ {\isacharparenleft}{\kern0pt}ShowL\isactrlsub i\isactrlsub n\isactrlsub t\ i{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isacharparenleft}{\kern0pt}hash\ l\isactrlsub d\ {\isacharparenleft}{\kern0pt}ShowL\isactrlsub i\isactrlsub n\isactrlsub t\ i{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}\ t\ s{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}\ sto\ x{\isachardoublequoteclose}\isanewline
+{\isacharbar}{\kern0pt}\ {\isachardoublequoteopen}copyRec\ l\isactrlsub s\ l\isactrlsub d\ {\isacharparenleft}{\kern0pt}STValue\ t{\isacharparenright}{\kern0pt}\ sto\ {\isacharequal}{\kern0pt}\isanewline
+\ \ \ \ {\isacharparenleft}{\kern0pt}let\ e\ {\isacharequal}{\kern0pt}\ accessStorage\ t\ l\isactrlsub s\ sto\ in\ Some\ {\isacharparenleft}{\kern0pt}fmupd\ l\isactrlsub d\ e\ sto{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+{\isacharbar}{\kern0pt}\ {\isachardoublequoteopen}copyRec\ {\isacharunderscore}{\kern0pt}\ {\isacharunderscore}{\kern0pt}\ {\isacharparenleft}{\kern0pt}STMap\ {\isacharunderscore}{\kern0pt}\ {\isacharunderscore}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isacharunderscore}{\kern0pt}\ {\isacharequal}{\kern0pt}\ None{\isachardoublequoteclose}\isanewline
+\ \isanewline
+\isacommand{definition}\isamarkupfalse%
+\ copy\ {\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}Location\ {\isasymRightarrow}\ Location\ {\isasymRightarrow}\ int\ {\isasymRightarrow}\ STypes\ {\isasymRightarrow}\ StorageT\ {\isasymRightarrow}\ StorageT\ option{\isachardoublequoteclose}\isanewline
+\isakeyword{where}\isanewline
+\ \ {\isachardoublequoteopen}copy\ l\isactrlsub s\ l\isactrlsub d\ x\ t\ sto\ {\isacharequal}{\kern0pt}\isanewline
+\ \ \ \ iter{\isacharprime}{\kern0pt}\ {\isacharparenleft}{\kern0pt}{\isasymlambda}i\ s{\isacharprime}{\kern0pt}{\isachardot}{\kern0pt}\ copyRec\ {\isacharparenleft}{\kern0pt}hash\ l\isactrlsub s\ {\isacharparenleft}{\kern0pt}ShowL\isactrlsub i\isactrlsub n\isactrlsub t\ i{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isacharparenleft}{\kern0pt}hash\ l\isactrlsub d\ {\isacharparenleft}{\kern0pt}ShowL\isactrlsub i\isactrlsub n\isactrlsub t\ i{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}\ t\ s{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}\ sto\ x{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{declare}\isamarkupfalse%
+\ copy{\isacharunderscore}{\kern0pt}def\ {\isacharbrackleft}{\kern0pt}solidity{\isacharunderscore}{\kern0pt}symbex{\isacharbrackright}{\kern0pt}\isanewline
+\isanewline
+\isanewline
+\isacommand{abbreviation}\isamarkupfalse%
+\ mystorage{\isadigit{2}}{\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}StorageT\isanewline
+\isakeyword{where}\ {\isachardoublequoteopen}mystorage{\isadigit{2}}\ {\isasymequiv}\ {\isacharparenleft}{\kern0pt}fmap{\isacharunderscore}{\kern0pt}of{\isacharunderscore}{\kern0pt}list\isanewline
+\ \ {\isacharbrackleft}{\kern0pt}{\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{0}}{\isachardot}{\kern0pt}{\isadigit{0}}{\isachardot}{\kern0pt}{\isadigit{0}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharcomma}{\kern0pt}\ STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}False{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isacharcomma}{\kern0pt}\isanewline
+\ \ \ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{1}}{\isachardot}{\kern0pt}{\isadigit{1}}{\isachardot}{\kern0pt}{\isadigit{0}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharcomma}{\kern0pt}\ STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}True{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isacharcomma}{\kern0pt}\isanewline
+\ \ \ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{0}}{\isachardot}{\kern0pt}{\isadigit{5}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharcomma}{\kern0pt}\ STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}False{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isacharcomma}{\kern0pt}\isanewline
+\ \ \ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{1}}{\isachardot}{\kern0pt}{\isadigit{5}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharcomma}{\kern0pt}\ STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}True{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isacharbrackright}{\kern0pt}{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}copy\ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{1}}{\isachardot}{\kern0pt}{\isadigit{0}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{5}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isadigit{2}}\ {\isacharparenleft}{\kern0pt}STValue\ TBool{\isacharparenright}{\kern0pt}\ mystorage\ {\isacharequal}{\kern0pt}\ Some\ mystorage{\isadigit{2}}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ eval%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\isadelimdocument
+%
+\endisadelimdocument
+%
+\isatagdocument
+%
+\isamarkupsubsection{Memory and Calldata%
+}
+\isamarkuptrue%
+%
+\isamarkupsubsubsection{Definition%
+}
+\isamarkuptrue%
+%
+\endisatagdocument
+{\isafolddocument}%
+%
+\isadelimdocument
+%
+\endisadelimdocument
+\isacommand{datatype}\isamarkupfalse%
+\ Memoryvalue\ {\isacharequal}{\kern0pt}\isanewline
+\ \ MValue\ Valuetype\isanewline
+\ \ {\isacharbar}{\kern0pt}\ MPointer\ Location\isanewline
+\isanewline
+\isacommand{type{\isacharunderscore}{\kern0pt}synonym}\isamarkupfalse%
+\ MemoryT\ {\isacharequal}{\kern0pt}\ {\isachardoublequoteopen}Memoryvalue\ Store{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{type{\isacharunderscore}{\kern0pt}synonym}\isamarkupfalse%
+\ CalldataT\ {\isacharequal}{\kern0pt}\ MemoryT\isanewline
+\isanewline
+\isacommand{datatype}\isamarkupfalse%
+\ MTypes\ {\isacharequal}{\kern0pt}\isanewline
+\ \ MTArray\ int\ MTypes\isanewline
+\ \ {\isacharbar}{\kern0pt}\ MTValue\ Types%
+\isadelimdocument
+%
+\endisadelimdocument
+%
+\isatagdocument
+%
+\isamarkupsubsubsection{Example%
+}
+\isamarkuptrue%
+%
+\endisatagdocument
+{\isafolddocument}%
+%
+\isadelimdocument
+%
+\endisadelimdocument
+\isacommand{abbreviation}\isamarkupfalse%
+\ mymemory{\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}MemoryT\isanewline
+\ \ \isakeyword{where}\ {\isachardoublequoteopen}mymemory\ {\isasymequiv}\isanewline
+\ \ \ \ {\isasymlparr}mapping\ {\isacharequal}{\kern0pt}\ fmap{\isacharunderscore}{\kern0pt}of{\isacharunderscore}{\kern0pt}list\isanewline
+\ \ \ \ \ \ {\isacharbrackleft}{\kern0pt}{\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{1}}{\isachardot}{\kern0pt}{\isadigit{1}}{\isachardot}{\kern0pt}{\isadigit{0}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharcomma}{\kern0pt}\ MValue\ STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}False{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isacharcomma}{\kern0pt}\isanewline
+\ \ \ \ \ \ \ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{0}}{\isachardot}{\kern0pt}{\isadigit{1}}{\isachardot}{\kern0pt}{\isadigit{0}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharcomma}{\kern0pt}\ MValue\ STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}True{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isacharcomma}{\kern0pt}\isanewline
+\ \ \ \ \ \ \ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{1}}{\isachardot}{\kern0pt}{\isadigit{0}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharcomma}{\kern0pt}\ MPointer\ STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{1}}{\isachardot}{\kern0pt}{\isadigit{0}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isacharcomma}{\kern0pt}\isanewline
+\ \ \ \ \ \ \ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{1}}{\isachardot}{\kern0pt}{\isadigit{0}}{\isachardot}{\kern0pt}{\isadigit{0}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharcomma}{\kern0pt}\ MValue\ STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}False{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isacharcomma}{\kern0pt}\isanewline
+\ \ \ \ \ \ \ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{0}}{\isachardot}{\kern0pt}{\isadigit{0}}{\isachardot}{\kern0pt}{\isadigit{0}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharcomma}{\kern0pt}\ MValue\ STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}True{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isacharcomma}{\kern0pt}\isanewline
+\ \ \ \ \ \ \ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{0}}{\isachardot}{\kern0pt}{\isadigit{0}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharcomma}{\kern0pt}\ MPointer\ STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{0}}{\isachardot}{\kern0pt}{\isadigit{0}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isacharbrackright}{\kern0pt}{\isacharcomma}{\kern0pt}\isanewline
+\ \ \ \ \ toploc\ {\isacharequal}{\kern0pt}\ {\isadigit{1}}{\isasymrparr}{\isachardoublequoteclose}%
+\isadelimdocument
+%
+\endisadelimdocument
+%
+\isatagdocument
+%
+\isamarkupsubsubsection{Initialization%
+}
+\isamarkuptrue%
+%
+\isamarkupsubsubsection{Definition%
+}
+\isamarkuptrue%
+%
+\endisatagdocument
+{\isafolddocument}%
+%
+\isadelimdocument
+%
+\endisadelimdocument
+\isacommand{primrec}\isamarkupfalse%
+\ minitRec\ {\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}Location\ {\isasymRightarrow}\ MTypes\ {\isasymRightarrow}\ MemoryT\ {\isasymRightarrow}\ MemoryT{\isachardoublequoteclose}\isanewline
+\isakeyword{where}\isanewline
+\ \ {\isachardoublequoteopen}minitRec\ loc\ {\isacharparenleft}{\kern0pt}MTArray\ x\ t{\isacharparenright}{\kern0pt}\ {\isacharequal}{\kern0pt}\ {\isacharparenleft}{\kern0pt}{\isasymlambda}mem{\isachardot}{\kern0pt}\isanewline
+\ \ \ \ let\ m\ {\isacharequal}{\kern0pt}\ updateStore\ loc\ {\isacharparenleft}{\kern0pt}MPointer\ loc{\isacharparenright}{\kern0pt}\ mem\isanewline
+\ \ \ \ in\ iter\ {\isacharparenleft}{\kern0pt}{\isasymlambda}i\ m{\isacharprime}{\kern0pt}\ {\isachardot}{\kern0pt}\ minitRec\ {\isacharparenleft}{\kern0pt}hash\ loc\ {\isacharparenleft}{\kern0pt}ShowL\isactrlsub i\isactrlsub n\isactrlsub t\ i{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}\ t\ m{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}\ m\ x{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+{\isacharbar}{\kern0pt}\ {\isachardoublequoteopen}minitRec\ loc\ {\isacharparenleft}{\kern0pt}MTValue\ t{\isacharparenright}{\kern0pt}\ {\isacharequal}{\kern0pt}\ updateStore\ loc\ {\isacharparenleft}{\kern0pt}MValue\ {\isacharparenleft}{\kern0pt}ival\ t{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{definition}\isamarkupfalse%
+\ minit\ {\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}int\ {\isasymRightarrow}\ MTypes\ {\isasymRightarrow}\ MemoryT\ {\isasymRightarrow}\ MemoryT{\isachardoublequoteclose}\isanewline
+\isakeyword{where}\isanewline
+\ \ {\isachardoublequoteopen}minit\ x\ t\ mem\ {\isacharequal}{\kern0pt}\isanewline
+\ \ \ \ {\isacharparenleft}{\kern0pt}let\ l\ {\isacharequal}{\kern0pt}\ ShowL\isactrlsub n\isactrlsub a\isactrlsub t\ {\isacharparenleft}{\kern0pt}toploc\ mem{\isacharparenright}{\kern0pt}{\isacharsemicolon}{\kern0pt}\isanewline
+\ \ \ \ \ \ \ \ \ m\ {\isacharequal}{\kern0pt}\ iter\ {\isacharparenleft}{\kern0pt}{\isasymlambda}i\ m{\isacharprime}{\kern0pt}\ {\isachardot}{\kern0pt}\ minitRec\ {\isacharparenleft}{\kern0pt}hash\ l\ {\isacharparenleft}{\kern0pt}ShowL\isactrlsub i\isactrlsub n\isactrlsub t\ i{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}\ t\ m{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}\ mem\ x\isanewline
+\ \ \ \ \ in\ snd\ {\isacharparenleft}{\kern0pt}allocate\ m{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{declare}\isamarkupfalse%
+\ minit{\isacharunderscore}{\kern0pt}def\ {\isacharbrackleft}{\kern0pt}solidity{\isacharunderscore}{\kern0pt}symbex{\isacharbrackright}{\kern0pt}%
+\isadelimdocument
+%
+\endisadelimdocument
+%
+\isatagdocument
+%
+\isamarkupsubsubsection{Example%
+}
+\isamarkuptrue%
+%
+\endisatagdocument
+{\isafolddocument}%
+%
+\isadelimdocument
+%
+\endisadelimdocument
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}minit\ {\isadigit{2}}\ {\isacharparenleft}{\kern0pt}MTArray\ {\isadigit{2}}\ {\isacharparenleft}{\kern0pt}MTValue\ TBool{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}\ emptyStore\ {\isacharequal}{\kern0pt}\isanewline
+{\isasymlparr}mapping\ {\isacharequal}{\kern0pt}\ fmap{\isacharunderscore}{\kern0pt}of{\isacharunderscore}{\kern0pt}list\isanewline
+\ \ {\isacharbrackleft}{\kern0pt}{\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{0}}{\isachardot}{\kern0pt}{\isadigit{0}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharcomma}{\kern0pt}\ MPointer\ STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{0}}{\isachardot}{\kern0pt}{\isadigit{0}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isacharcomma}{\kern0pt}\ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{0}}{\isachardot}{\kern0pt}{\isadigit{0}}{\isachardot}{\kern0pt}{\isadigit{0}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharcomma}{\kern0pt}\ MValue\ STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}False{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isacharcomma}{\kern0pt}\isanewline
+\ \ \ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{1}}{\isachardot}{\kern0pt}{\isadigit{0}}{\isachardot}{\kern0pt}{\isadigit{0}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharcomma}{\kern0pt}\ MValue\ STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}False{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isacharcomma}{\kern0pt}\ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{1}}{\isachardot}{\kern0pt}{\isadigit{0}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharcomma}{\kern0pt}\ MPointer\ STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{1}}{\isachardot}{\kern0pt}{\isadigit{0}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isacharcomma}{\kern0pt}\isanewline
+\ \ \ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{0}}{\isachardot}{\kern0pt}{\isadigit{1}}{\isachardot}{\kern0pt}{\isadigit{0}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharcomma}{\kern0pt}\ MValue\ STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}False{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isacharcomma}{\kern0pt}\ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{1}}{\isachardot}{\kern0pt}{\isadigit{1}}{\isachardot}{\kern0pt}{\isadigit{0}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharcomma}{\kern0pt}\ MValue\ STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}False{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isacharbrackright}{\kern0pt}{\isacharcomma}{\kern0pt}\isanewline
+\ \ toploc\ {\isacharequal}{\kern0pt}\ {\isadigit{1}}{\isasymrparr}{\isachardoublequoteclose}%
+\isadelimproof
+\ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ eval%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\isadelimdocument
+%
+\endisadelimdocument
+%
+\isatagdocument
+%
+\isamarkupsubsubsection{Copy from memory to memory%
+}
+\isamarkuptrue%
+%
+\isamarkupsubsubsection{Definition%
+}
+\isamarkuptrue%
+%
+\endisatagdocument
+{\isafolddocument}%
+%
+\isadelimdocument
+%
+\endisadelimdocument
+\isacommand{primrec}\isamarkupfalse%
+\ cpm{\isadigit{2}}mrec\ {\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}Location\ {\isasymRightarrow}\ Location\ {\isasymRightarrow}\ MTypes\ {\isasymRightarrow}\ MemoryT\ {\isasymRightarrow}\ MemoryT\ {\isasymRightarrow}\ MemoryT\ option{\isachardoublequoteclose}\isanewline
+\isakeyword{where}\isanewline
+\ \ {\isachardoublequoteopen}cpm{\isadigit{2}}mrec\ l\isactrlsub s\ l\isactrlsub d\ {\isacharparenleft}{\kern0pt}MTArray\ x\ t{\isacharparenright}{\kern0pt}\ m\isactrlsub s\ m\isactrlsub d\ {\isacharequal}{\kern0pt}\isanewline
+\ \ \ \ {\isacharparenleft}{\kern0pt}case\ accessStore\ l\isactrlsub s\ m\isactrlsub s\ of\isanewline
+\ \ \ \ \ \ Some\ {\isacharparenleft}{\kern0pt}MPointer\ l{\isacharparenright}{\kern0pt}\ {\isasymRightarrow}\isanewline
+\ \ \ \ \ \ \ \ {\isacharparenleft}{\kern0pt}let\ m\ {\isacharequal}{\kern0pt}\ updateStore\ l\isactrlsub d\ {\isacharparenleft}{\kern0pt}MPointer\ l\isactrlsub d{\isacharparenright}{\kern0pt}\ m\isactrlsub d\isanewline
+\ \ \ \ \ \ \ \ \ \ in\ iter{\isacharprime}{\kern0pt}\ {\isacharparenleft}{\kern0pt}{\isasymlambda}i\ m{\isacharprime}{\kern0pt}{\isachardot}{\kern0pt}\ cpm{\isadigit{2}}mrec\ {\isacharparenleft}{\kern0pt}hash\ l\isactrlsub s\ {\isacharparenleft}{\kern0pt}ShowL\isactrlsub i\isactrlsub n\isactrlsub t\ i{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isacharparenleft}{\kern0pt}hash\ l\isactrlsub d\ {\isacharparenleft}{\kern0pt}ShowL\isactrlsub i\isactrlsub n\isactrlsub t\ i{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}\ t\ m\isactrlsub s\ m{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}\ m\ x{\isacharparenright}{\kern0pt}\isanewline
+\ \ \ \ {\isacharbar}{\kern0pt}\ {\isacharunderscore}{\kern0pt}\ {\isasymRightarrow}\ None{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+{\isacharbar}{\kern0pt}\ {\isachardoublequoteopen}cpm{\isadigit{2}}mrec\ l\isactrlsub s\ l\isactrlsub d\ {\isacharparenleft}{\kern0pt}MTValue\ t{\isacharparenright}{\kern0pt}\ m\isactrlsub s\ m\isactrlsub d\ {\isacharequal}{\kern0pt}\isanewline
+\ \ \ \ {\isacharparenleft}{\kern0pt}case\ accessStore\ l\isactrlsub s\ m\isactrlsub s\ of\isanewline
+\ \ \ \ \ \ Some\ {\isacharparenleft}{\kern0pt}MValue\ v{\isacharparenright}{\kern0pt}\ {\isasymRightarrow}\ Some\ {\isacharparenleft}{\kern0pt}updateStore\ l\isactrlsub d\ {\isacharparenleft}{\kern0pt}MValue\ v{\isacharparenright}{\kern0pt}\ m\isactrlsub d{\isacharparenright}{\kern0pt}\isanewline
+\ \ \ \ {\isacharbar}{\kern0pt}\ {\isacharunderscore}{\kern0pt}\ {\isasymRightarrow}\ None{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{definition}\isamarkupfalse%
+\ cpm{\isadigit{2}}m\ {\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}Location\ {\isasymRightarrow}\ Location\ {\isasymRightarrow}\ int\ {\isasymRightarrow}\ MTypes\ {\isasymRightarrow}\ MemoryT\ {\isasymRightarrow}\ MemoryT\ {\isasymRightarrow}\ MemoryT\ option{\isachardoublequoteclose}\isanewline
+\isakeyword{where}\isanewline
+\ \ {\isachardoublequoteopen}cpm{\isadigit{2}}m\ l\isactrlsub s\ l\isactrlsub d\ x\ t\ m\isactrlsub s\ m\isactrlsub d\ {\isacharequal}{\kern0pt}\ iter{\isacharprime}{\kern0pt}\ {\isacharparenleft}{\kern0pt}{\isasymlambda}i\ m{\isachardot}{\kern0pt}\ cpm{\isadigit{2}}mrec\ {\isacharparenleft}{\kern0pt}hash\ l\isactrlsub s\ {\isacharparenleft}{\kern0pt}ShowL\isactrlsub i\isactrlsub n\isactrlsub t\ i{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isacharparenleft}{\kern0pt}hash\ l\isactrlsub d\ {\isacharparenleft}{\kern0pt}ShowL\isactrlsub i\isactrlsub n\isactrlsub t\ i{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}\ t\ m\isactrlsub s\ m{\isacharparenright}{\kern0pt}\ m\isactrlsub d\ x{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{declare}\isamarkupfalse%
+\ cpm{\isadigit{2}}m{\isacharunderscore}{\kern0pt}def\ {\isacharbrackleft}{\kern0pt}solidity{\isacharunderscore}{\kern0pt}symbex{\isacharbrackright}{\kern0pt}%
+\isadelimdocument
+%
+\endisadelimdocument
+%
+\isatagdocument
+%
+\isamarkupsubsubsection{Example%
+}
+\isamarkuptrue%
+%
+\endisatagdocument
+{\isafolddocument}%
+%
+\isadelimdocument
+%
+\endisadelimdocument
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}cpm{\isadigit{2}}m\ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{0}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{0}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isadigit{2}}\ {\isacharparenleft}{\kern0pt}MTArray\ {\isadigit{2}}\ {\isacharparenleft}{\kern0pt}MTValue\ TBool{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}\ mymemory\ {\isacharparenleft}{\kern0pt}snd\ {\isacharparenleft}{\kern0pt}allocate\ emptyStore{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isacharequal}{\kern0pt}\ Some\ mymemory{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ eval%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\ \isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{abbreviation}\isamarkupfalse%
+\ mymemory{\isadigit{2}}{\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}MemoryT\isanewline
+\ \ \isakeyword{where}\ {\isachardoublequoteopen}mymemory{\isadigit{2}}\ {\isasymequiv}\isanewline
+\ \ \ \ {\isasymlparr}mapping\ {\isacharequal}{\kern0pt}\ fmap{\isacharunderscore}{\kern0pt}of{\isacharunderscore}{\kern0pt}list\isanewline
+\ \ \ \ \ \ {\isacharbrackleft}{\kern0pt}{\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{0}}{\isachardot}{\kern0pt}{\isadigit{5}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharcomma}{\kern0pt}\ MValue\ STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}True{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isacharcomma}{\kern0pt}\isanewline
+\ \ \ \ \ \ \ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{1}}{\isachardot}{\kern0pt}{\isadigit{5}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharcomma}{\kern0pt}\ MValue\ STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}False{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isacharbrackright}{\kern0pt}{\isacharcomma}{\kern0pt}\isanewline
+\ \ \ \ \ toploc\ {\isacharequal}{\kern0pt}\ {\isadigit{0}}{\isasymrparr}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}cpm{\isadigit{2}}m\ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{1}}{\isachardot}{\kern0pt}{\isadigit{0}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{5}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isadigit{2}}\ {\isacharparenleft}{\kern0pt}MTValue\ TBool{\isacharparenright}{\kern0pt}\ mymemory\ emptyStore\ {\isacharequal}{\kern0pt}\ Some\ mymemory{\isadigit{2}}{\isachardoublequoteclose}%
+\isadelimproof
+\ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ eval%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\isadelimdocument
+%
+\endisadelimdocument
+%
+\isatagdocument
+%
+\isamarkupsubsection{Copy from storage to memory%
+}
+\isamarkuptrue%
+%
+\isamarkupsubsubsection{Definition%
+}
+\isamarkuptrue%
+%
+\endisatagdocument
+{\isafolddocument}%
+%
+\isadelimdocument
+%
+\endisadelimdocument
+\isacommand{primrec}\isamarkupfalse%
+\ cps{\isadigit{2}}mrec\ {\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}Location\ {\isasymRightarrow}\ Location\ {\isasymRightarrow}\ STypes\ {\isasymRightarrow}\ StorageT\ {\isasymRightarrow}\ MemoryT\ {\isasymRightarrow}\ MemoryT\ option{\isachardoublequoteclose}\isanewline
+\isakeyword{where}\isanewline
+\ \ {\isachardoublequoteopen}cps{\isadigit{2}}mrec\ locs\ locm\ {\isacharparenleft}{\kern0pt}STArray\ x\ t{\isacharparenright}{\kern0pt}\ sto\ mem\ {\isacharequal}{\kern0pt}\isanewline
+\ \ \ \ {\isacharparenleft}{\kern0pt}let\ m\ {\isacharequal}{\kern0pt}\ updateStore\ locm\ {\isacharparenleft}{\kern0pt}MPointer\ locm{\isacharparenright}{\kern0pt}\ mem\isanewline
+\ \ \ \ in\ iter{\isacharprime}{\kern0pt}\ {\isacharparenleft}{\kern0pt}{\isasymlambda}i\ m{\isacharprime}{\kern0pt}{\isachardot}{\kern0pt}\ cps{\isadigit{2}}mrec\ {\isacharparenleft}{\kern0pt}hash\ locs\ {\isacharparenleft}{\kern0pt}ShowL\isactrlsub i\isactrlsub n\isactrlsub t\ i{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isacharparenleft}{\kern0pt}hash\ locm\ {\isacharparenleft}{\kern0pt}ShowL\isactrlsub i\isactrlsub n\isactrlsub t\ i{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}\ t\ sto\ m{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}\ m\ x{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+{\isacharbar}{\kern0pt}\ {\isachardoublequoteopen}cps{\isadigit{2}}mrec\ locs\ locm\ {\isacharparenleft}{\kern0pt}STValue\ t{\isacharparenright}{\kern0pt}\ sto\ mem\ {\isacharequal}{\kern0pt}\isanewline
+\ \ \ \ {\isacharparenleft}{\kern0pt}let\ v\ {\isacharequal}{\kern0pt}\ accessStorage\ t\ locs\ sto\isanewline
+\ \ \ \ in\ Some\ {\isacharparenleft}{\kern0pt}updateStore\ locm\ {\isacharparenleft}{\kern0pt}MValue\ v{\isacharparenright}{\kern0pt}\ mem{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+{\isacharbar}{\kern0pt}\ {\isachardoublequoteopen}cps{\isadigit{2}}mrec\ {\isacharunderscore}{\kern0pt}\ {\isacharunderscore}{\kern0pt}\ {\isacharparenleft}{\kern0pt}STMap\ {\isacharunderscore}{\kern0pt}\ {\isacharunderscore}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isacharunderscore}{\kern0pt}\ {\isacharunderscore}{\kern0pt}\ {\isacharequal}{\kern0pt}\ None{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{definition}\isamarkupfalse%
+\ cps{\isadigit{2}}m\ {\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}Location\ {\isasymRightarrow}\ Location\ {\isasymRightarrow}\ int\ {\isasymRightarrow}\ STypes\ {\isasymRightarrow}\ StorageT\ {\isasymRightarrow}\ MemoryT\ {\isasymRightarrow}\ MemoryT\ option{\isachardoublequoteclose}\isanewline
+\isakeyword{where}\isanewline
+\ \ {\isachardoublequoteopen}cps{\isadigit{2}}m\ locs\ locm\ x\ t\ sto\ mem\ {\isacharequal}{\kern0pt}\isanewline
+\ \ \ \ iter{\isacharprime}{\kern0pt}\ {\isacharparenleft}{\kern0pt}{\isasymlambda}i\ m{\isacharprime}{\kern0pt}{\isachardot}{\kern0pt}\ cps{\isadigit{2}}mrec\ {\isacharparenleft}{\kern0pt}hash\ locs\ {\isacharparenleft}{\kern0pt}ShowL\isactrlsub i\isactrlsub n\isactrlsub t\ i{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isacharparenleft}{\kern0pt}hash\ locm\ {\isacharparenleft}{\kern0pt}ShowL\isactrlsub i\isactrlsub n\isactrlsub t\ i{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}\ t\ sto\ m{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}\ mem\ x{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{declare}\isamarkupfalse%
+\ cps{\isadigit{2}}m{\isacharunderscore}{\kern0pt}def\ {\isacharbrackleft}{\kern0pt}solidity{\isacharunderscore}{\kern0pt}symbex{\isacharbrackright}{\kern0pt}%
+\isadelimdocument
+%
+\endisadelimdocument
+%
+\isatagdocument
+%
+\isamarkupsubsubsection{Example%
+}
+\isamarkuptrue%
+%
+\endisatagdocument
+{\isafolddocument}%
+%
+\isadelimdocument
+%
+\endisadelimdocument
+\isacommand{abbreviation}\isamarkupfalse%
+\ mystorage{\isadigit{3}}{\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}StorageT\isanewline
+\isakeyword{where}\ {\isachardoublequoteopen}mystorage{\isadigit{3}}\ {\isasymequiv}\ {\isacharparenleft}{\kern0pt}fmap{\isacharunderscore}{\kern0pt}of{\isacharunderscore}{\kern0pt}list\isanewline
+\ \ {\isacharbrackleft}{\kern0pt}{\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{0}}{\isachardot}{\kern0pt}{\isadigit{0}}{\isachardot}{\kern0pt}{\isadigit{1}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharcomma}{\kern0pt}\ STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}True{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isacharcomma}{\kern0pt}\isanewline
+\ \ \ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{1}}{\isachardot}{\kern0pt}{\isadigit{0}}{\isachardot}{\kern0pt}{\isadigit{1}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharcomma}{\kern0pt}\ STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}False{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isacharcomma}{\kern0pt}\isanewline
+\ \ \ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{0}}{\isachardot}{\kern0pt}{\isadigit{1}}{\isachardot}{\kern0pt}{\isadigit{1}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharcomma}{\kern0pt}\ STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}True{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isacharcomma}{\kern0pt}\isanewline
+\ \ \ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{1}}{\isachardot}{\kern0pt}{\isadigit{1}}{\isachardot}{\kern0pt}{\isadigit{1}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharcomma}{\kern0pt}\ STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}False{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}{\isacharbrackright}{\kern0pt}{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}cps{\isadigit{2}}m\ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{1}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{0}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isadigit{2}}\ {\isacharparenleft}{\kern0pt}STArray\ {\isadigit{2}}\ {\isacharparenleft}{\kern0pt}STValue\ TBool{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}\ mystorage{\isadigit{3}}\ {\isacharparenleft}{\kern0pt}snd\ {\isacharparenleft}{\kern0pt}allocate\ emptyStore{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isacharequal}{\kern0pt}\ Some\ mymemory{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ eval%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\isadelimdocument
+%
+\endisadelimdocument
+%
+\isatagdocument
+%
+\isamarkupsubsection{Copy from memory to storage%
+}
+\isamarkuptrue%
+%
+\isamarkupsubsubsection{Definition%
+}
+\isamarkuptrue%
+%
+\endisatagdocument
+{\isafolddocument}%
+%
+\isadelimdocument
+%
+\endisadelimdocument
+\isacommand{primrec}\isamarkupfalse%
+\ cpm{\isadigit{2}}srec\ {\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}Location\ {\isasymRightarrow}\ Location\ {\isasymRightarrow}\ MTypes\ {\isasymRightarrow}\ MemoryT\ {\isasymRightarrow}\ StorageT\ {\isasymRightarrow}\ StorageT\ option{\isachardoublequoteclose}\isanewline
+\isakeyword{where}\isanewline
+\ \ {\isachardoublequoteopen}cpm{\isadigit{2}}srec\ locm\ locs\ {\isacharparenleft}{\kern0pt}MTArray\ x\ t{\isacharparenright}{\kern0pt}\ mem\ sto\ {\isacharequal}{\kern0pt}\isanewline
+\ \ \ \ {\isacharparenleft}{\kern0pt}case\ accessStore\ locm\ mem\ of\isanewline
+\ \ \ \ \ \ Some\ {\isacharparenleft}{\kern0pt}MPointer\ l{\isacharparenright}{\kern0pt}\ {\isasymRightarrow}\isanewline
+\ \ \ \ \ \ \ \ iter{\isacharprime}{\kern0pt}\ {\isacharparenleft}{\kern0pt}{\isasymlambda}i\ s{\isacharprime}{\kern0pt}{\isachardot}{\kern0pt}\ cpm{\isadigit{2}}srec\ {\isacharparenleft}{\kern0pt}hash\ locm\ {\isacharparenleft}{\kern0pt}ShowL\isactrlsub i\isactrlsub n\isactrlsub t\ i{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isacharparenleft}{\kern0pt}hash\ locs\ {\isacharparenleft}{\kern0pt}ShowL\isactrlsub i\isactrlsub n\isactrlsub t\ i{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}\ t\ mem\ s{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}\ sto\ x\isanewline
+\ \ \ \ {\isacharbar}{\kern0pt}\ {\isacharunderscore}{\kern0pt}\ {\isasymRightarrow}\ None{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+{\isacharbar}{\kern0pt}\ {\isachardoublequoteopen}cpm{\isadigit{2}}srec\ locm\ locs\ {\isacharparenleft}{\kern0pt}MTValue\ t{\isacharparenright}{\kern0pt}\ mem\ sto\ {\isacharequal}{\kern0pt}\isanewline
+\ \ \ \ {\isacharparenleft}{\kern0pt}case\ accessStore\ locm\ mem\ of\isanewline
+\ \ \ \ \ \ Some\ {\isacharparenleft}{\kern0pt}MValue\ v{\isacharparenright}{\kern0pt}\ {\isasymRightarrow}\ Some\ {\isacharparenleft}{\kern0pt}fmupd\ locs\ v\ sto{\isacharparenright}{\kern0pt}\isanewline
+\ \ \ \ {\isacharbar}{\kern0pt}\ {\isacharunderscore}{\kern0pt}\ {\isasymRightarrow}\ None{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{definition}\isamarkupfalse%
+\ cpm{\isadigit{2}}s\ {\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}Location\ {\isasymRightarrow}\ Location\ {\isasymRightarrow}\ int\ {\isasymRightarrow}\ MTypes\ {\isasymRightarrow}\ MemoryT\ {\isasymRightarrow}\ StorageT\ {\isasymRightarrow}\ StorageT\ option{\isachardoublequoteclose}\isanewline
+\isakeyword{where}\isanewline
+\ \ {\isachardoublequoteopen}cpm{\isadigit{2}}s\ locm\ locs\ x\ t\ mem\ sto\ {\isacharequal}{\kern0pt}\isanewline
+\ \ \ \ iter{\isacharprime}{\kern0pt}\ {\isacharparenleft}{\kern0pt}{\isasymlambda}i\ s{\isacharprime}{\kern0pt}{\isachardot}{\kern0pt}\ cpm{\isadigit{2}}srec\ {\isacharparenleft}{\kern0pt}hash\ locm\ {\isacharparenleft}{\kern0pt}ShowL\isactrlsub i\isactrlsub n\isactrlsub t\ i{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isacharparenleft}{\kern0pt}hash\ locs\ {\isacharparenleft}{\kern0pt}ShowL\isactrlsub i\isactrlsub n\isactrlsub t\ i{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}\ t\ mem\ s{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}\ sto\ x{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{declare}\isamarkupfalse%
+\ cpm{\isadigit{2}}s{\isacharunderscore}{\kern0pt}def\ {\isacharbrackleft}{\kern0pt}solidity{\isacharunderscore}{\kern0pt}symbex{\isacharbrackright}{\kern0pt}%
+\isadelimdocument
+%
+\endisadelimdocument
+%
+\isatagdocument
+%
+\isamarkupsubsubsection{Example%
+}
+\isamarkuptrue%
+%
+\endisatagdocument
+{\isafolddocument}%
+%
+\isadelimdocument
+%
+\endisadelimdocument
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}cpm{\isadigit{2}}s\ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{0}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isacharparenleft}{\kern0pt}STR\ {\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isadigit{1}}{\isacharprime}{\kern0pt}{\isacharprime}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isadigit{2}}\ {\isacharparenleft}{\kern0pt}MTArray\ {\isadigit{2}}\ {\isacharparenleft}{\kern0pt}MTValue\ TBool{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}\ mymemory\ fmempty\ {\isacharequal}{\kern0pt}\ Some\ mystorage{\isadigit{3}}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ eval%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{declare}\isamarkupfalse%
+\ copyRec{\isachardot}{\kern0pt}simps\ {\isacharbrackleft}{\kern0pt}simp\ del{\isacharcomma}{\kern0pt}\ solidity{\isacharunderscore}{\kern0pt}symbex\ add{\isacharbrackright}{\kern0pt}\isanewline
+\isacommand{declare}\isamarkupfalse%
+\ minitRec{\isachardot}{\kern0pt}simps\ {\isacharbrackleft}{\kern0pt}simp\ del{\isacharcomma}{\kern0pt}\ solidity{\isacharunderscore}{\kern0pt}symbex\ add{\isacharbrackright}{\kern0pt}\isanewline
+\isacommand{declare}\isamarkupfalse%
+\ cpm{\isadigit{2}}mrec{\isachardot}{\kern0pt}simps\ {\isacharbrackleft}{\kern0pt}simp\ del{\isacharcomma}{\kern0pt}\ solidity{\isacharunderscore}{\kern0pt}symbex\ add{\isacharbrackright}{\kern0pt}\isanewline
+\isacommand{declare}\isamarkupfalse%
+\ cps{\isadigit{2}}mrec{\isachardot}{\kern0pt}simps\ {\isacharbrackleft}{\kern0pt}simp\ del{\isacharcomma}{\kern0pt}\ solidity{\isacharunderscore}{\kern0pt}symbex\ add{\isacharbrackright}{\kern0pt}\isanewline
+\isacommand{declare}\isamarkupfalse%
+\ cpm{\isadigit{2}}srec{\isachardot}{\kern0pt}simps\ {\isacharbrackleft}{\kern0pt}simp\ del{\isacharcomma}{\kern0pt}\ solidity{\isacharunderscore}{\kern0pt}symbex\ add{\isacharbrackright}{\kern0pt}\isanewline
+%
+\isadelimtheory
+\isanewline
+%
+\endisadelimtheory
+%
+\isatagtheory
+\isacommand{end}\isamarkupfalse%
+%
+\endisatagtheory
+{\isafoldtheory}%
+%
+\isadelimtheory
+%
+\endisadelimtheory
+%
+\end{isabellebody}%
+\endinput
+%:%file=/cygdrive/e/Users/billy/Documents/Pc Sync Files/solidity/Storage.thy%:%
+%:%11=1%:%
+%:%27=3%:%
+%:%28=3%:%
+%:%29=4%:%
+%:%30=5%:%
+%:%31=6%:%
+%:%45=8%:%
+%:%55=10%:%
+%:%56=10%:%
+%:%57=11%:%
+%:%58=12%:%
+%:%59=13%:%
+%:%60=13%:%
+%:%61=14%:%
+%:%62=15%:%
+%:%63=15%:%
+%:%65=15%:%
+%:%69=15%:%
+%:%70=15%:%
+%:%77=15%:%
+%:%78=16%:%
+%:%79=17%:%
+%:%80=17%:%
+%:%81=18%:%
+%:%84=19%:%
+%:%88=19%:%
+%:%89=19%:%
+%:%90=19%:%
+%:%95=19%:%
+%:%98=20%:%
+%:%99=21%:%
+%:%100=21%:%
+%:%101=22%:%
+%:%104=23%:%
+%:%108=23%:%
+%:%109=23%:%
+%:%110=23%:%
+%:%115=23%:%
+%:%118=24%:%
+%:%119=25%:%
+%:%120=25%:%
+%:%121=26%:%
+%:%122=27%:%
+%:%123=28%:%
+%:%124=29%:%
+%:%131=30%:%
+%:%132=30%:%
+%:%133=31%:%
+%:%134=31%:%
+%:%135=32%:%
+%:%136=32%:%
+%:%137=32%:%
+%:%138=32%:%
+%:%139=33%:%
+%:%140=33%:%
+%:%141=33%:%
+%:%142=34%:%
+%:%143=34%:%
+%:%144=35%:%
+%:%145=35%:%
+%:%146=36%:%
+%:%147=36%:%
+%:%148=36%:%
+%:%149=36%:%
+%:%150=37%:%
+%:%151=38%:%
+%:%152=38%:%
+%:%153=38%:%
+%:%154=39%:%
+%:%155=39%:%
+%:%156=39%:%
+%:%157=40%:%
+%:%158=40%:%
+%:%159=41%:%
+%:%160=41%:%
+%:%161=42%:%
+%:%162=42%:%
+%:%163=42%:%
+%:%164=42%:%
+%:%165=42%:%
+%:%166=43%:%
+%:%167=43%:%
+%:%168=43%:%
+%:%169=43%:%
+%:%170=43%:%
+%:%171=43%:%
+%:%172=44%:%
+%:%173=44%:%
+%:%174=45%:%
+%:%175=45%:%
+%:%176=46%:%
+%:%177=46%:%
+%:%178=46%:%
+%:%179=46%:%
+%:%180=46%:%
+%:%181=47%:%
+%:%182=47%:%
+%:%183=47%:%
+%:%184=47%:%
+%:%185=47%:%
+%:%186=48%:%
+%:%187=48%:%
+%:%188=48%:%
+%:%189=48%:%
+%:%190=48%:%
+%:%191=49%:%
+%:%192=49%:%
+%:%193=49%:%
+%:%194=49%:%
+%:%195=50%:%
+%:%196=50%:%
+%:%197=51%:%
+%:%198=51%:%
+%:%199=52%:%
+%:%200=52%:%
+%:%201=52%:%
+%:%202=52%:%
+%:%203=52%:%
+%:%204=53%:%
+%:%205=53%:%
+%:%206=53%:%
+%:%207=53%:%
+%:%208=53%:%
+%:%209=54%:%
+%:%210=54%:%
+%:%211=54%:%
+%:%212=54%:%
+%:%213=54%:%
+%:%214=55%:%
+%:%215=55%:%
+%:%216=55%:%
+%:%217=55%:%
+%:%218=56%:%
+%:%219=56%:%
+%:%220=57%:%
+%:%221=57%:%
+%:%222=58%:%
+%:%223=58%:%
+%:%224=59%:%
+%:%225=59%:%
+%:%226=59%:%
+%:%227=59%:%
+%:%228=59%:%
+%:%229=60%:%
+%:%230=60%:%
+%:%231=61%:%
+%:%232=61%:%
+%:%233=61%:%
+%:%234=61%:%
+%:%235=61%:%
+%:%236=62%:%
+%:%251=64%:%
+%:%261=66%:%
+%:%262=66%:%
+%:%263=67%:%
+%:%264=68%:%
+%:%265=69%:%
+%:%266=70%:%
+%:%267=70%:%
+%:%268=71%:%
+%:%269=72%:%
+%:%270=73%:%
+%:%271=73%:%
+%:%272=74%:%
+%:%273=75%:%
+%:%274=75%:%
+%:%275=76%:%
+%:%276=77%:%
+%:%277=78%:%
+%:%278=78%:%
+%:%279=79%:%
+%:%280=80%:%
+%:%281=80%:%
+%:%282=81%:%
+%:%283=82%:%
+%:%284=83%:%
+%:%285=84%:%
+%:%286=85%:%
+%:%287=85%:%
+%:%288=86%:%
+%:%289=87%:%
+%:%290=88%:%
+%:%291=88%:%
+%:%292=89%:%
+%:%293=90%:%
+%:%294=90%:%
+%:%295=91%:%
+%:%296=92%:%
+%:%297=93%:%
+%:%298=93%:%
+%:%305=95%:%
+%:%315=97%:%
+%:%316=97%:%
+%:%317=98%:%
+%:%318=99%:%
+%:%319=100%:%
+%:%320=101%:%
+%:%321=102%:%
+%:%322=102%:%
+%:%329=104%:%
+%:%333=106%:%
+%:%343=108%:%
+%:%344=108%:%
+%:%345=109%:%
+%:%346=110%:%
+%:%347=110%:%
+%:%348=111%:%
+%:%349=112%:%
+%:%350=112%:%
+%:%351=113%:%
+%:%352=114%:%
+%:%359=116%:%
+%:%369=118%:%
+%:%370=118%:%
+%:%371=119%:%
+%:%380=123%:%
+%:%390=125%:%
+%:%391=125%:%
+%:%392=126%:%
+%:%393=127%:%
+%:%396=130%:%
+%:%397=131%:%
+%:%398=132%:%
+%:%399=132%:%
+%:%406=134%:%
+%:%416=136%:%
+%:%417=136%:%
+%:%418=137%:%
+%:%419=138%:%
+%:%420=139%:%
+%:%421=140%:%
+%:%422=141%:%
+%:%423=142%:%
+%:%424=143%:%
+%:%425=144%:%
+%:%426=144%:%
+%:%427=145%:%
+%:%428=146%:%
+%:%429=147%:%
+%:%430=148%:%
+%:%431=149%:%
+%:%432=149%:%
+%:%433=150%:%
+%:%434=151%:%
+%:%435=152%:%
+%:%436=152%:%
+%:%437=153%:%
+%:%441=157%:%
+%:%442=158%:%
+%:%443=159%:%
+%:%444=159%:%
+%:%447=160%:%
+%:%451=160%:%
+%:%452=160%:%
+%:%466=162%:%
+%:%470=164%:%
+%:%480=166%:%
+%:%481=166%:%
+%:%482=167%:%
+%:%483=168%:%
+%:%484=169%:%
+%:%485=170%:%
+%:%486=170%:%
+%:%487=171%:%
+%:%488=172%:%
+%:%489=172%:%
+%:%490=173%:%
+%:%491=174%:%
+%:%492=174%:%
+%:%493=175%:%
+%:%494=176%:%
+%:%501=178%:%
+%:%511=180%:%
+%:%512=180%:%
+%:%513=181%:%
+%:%528=191%:%
+%:%532=193%:%
+%:%542=195%:%
+%:%543=195%:%
+%:%544=196%:%
+%:%545=197%:%
+%:%547=199%:%
+%:%548=200%:%
+%:%549=201%:%
+%:%550=202%:%
+%:%551=202%:%
+%:%552=203%:%
+%:%553=204%:%
+%:%556=207%:%
+%:%557=208%:%
+%:%558=209%:%
+%:%559=209%:%
+%:%566=211%:%
+%:%576=213%:%
+%:%577=213%:%
+%:%584=218%:%
+%:%588=218%:%
+%:%589=218%:%
+%:%603=220%:%
+%:%607=222%:%
+%:%617=224%:%
+%:%618=224%:%
+%:%619=225%:%
+%:%620=226%:%
+%:%625=231%:%
+%:%626=232%:%
+%:%629=235%:%
+%:%630=236%:%
+%:%631=237%:%
+%:%632=237%:%
+%:%633=238%:%
+%:%634=239%:%
+%:%635=240%:%
+%:%636=241%:%
+%:%637=241%:%
+%:%644=243%:%
+%:%654=245%:%
+%:%655=245%:%
+%:%658=246%:%
+%:%662=246%:%
+%:%663=246%:%
+%:%668=246%:%
+%:%671=247%:%
+%:%672=248%:%
+%:%673=248%:%
+%:%674=249%:%
+%:%678=253%:%
+%:%679=254%:%
+%:%680=255%:%
+%:%681=255%:%
+%:%683=255%:%
+%:%687=255%:%
+%:%688=255%:%
+%:%702=257%:%
+%:%706=259%:%
+%:%716=261%:%
+%:%717=261%:%
+%:%718=262%:%
+%:%719=263%:%
+%:%721=265%:%
+%:%722=266%:%
+%:%724=268%:%
+%:%725=269%:%
+%:%726=270%:%
+%:%727=271%:%
+%:%728=271%:%
+%:%729=272%:%
+%:%730=273%:%
+%:%731=274%:%
+%:%732=275%:%
+%:%733=276%:%
+%:%734=276%:%
+%:%741=278%:%
+%:%751=280%:%
+%:%752=280%:%
+%:%753=281%:%
+%:%757=285%:%
+%:%758=286%:%
+%:%759=287%:%
+%:%760=287%:%
+%:%763=288%:%
+%:%767=288%:%
+%:%768=288%:%
+%:%782=290%:%
+%:%786=292%:%
+%:%796=294%:%
+%:%797=294%:%
+%:%798=295%:%
+%:%799=296%:%
+%:%803=300%:%
+%:%804=301%:%
+%:%807=304%:%
+%:%808=305%:%
+%:%809=306%:%
+%:%810=306%:%
+%:%811=307%:%
+%:%812=308%:%
+%:%813=309%:%
+%:%814=310%:%
+%:%815=311%:%
+%:%816=311%:%
+%:%823=313%:%
+%:%833=315%:%
+%:%834=315%:%
+%:%837=316%:%
+%:%841=316%:%
+%:%842=316%:%
+%:%847=316%:%
+%:%850=317%:%
+%:%851=318%:%
+%:%852=318%:%
+%:%853=319%:%
+%:%854=319%:%
+%:%855=320%:%
+%:%856=320%:%
+%:%857=321%:%
+%:%858=321%:%
+%:%859=322%:%
+%:%860=322%:%
+%:%863=323%:%
+%:%868=324%:%

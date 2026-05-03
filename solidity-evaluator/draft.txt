@@ -1,0 +1,48 @@
+module "solidity-evaluator-0.1.0.0-E6rYduruX84J8q3ItmGdtm/Expressions" {
+  tick function "readList" on line 30;
+  tick function "showsPrec" on line 30;
+  tick function "readList" on line 28;
+  tick function "showsPrec" on line 28;
+  tick function "readList" on line 33;
+  tick function "showsPrec" on line 33;
+}
+module "solidity-evaluator-0.1.0.0-E6rYduruX84J8q3ItmGdtm/Environment" {
+  tick function "readList" on line 21;
+  tick function "showsPrec" on line 21;
+  tick function "readList" on line 24;
+  tick function "showsPrec" on line 24;
+  tick function "readList" on line 27;
+  tick function "showsPrec" on line 27;
+}
+module "solidity-evaluator-0.1.0.0-E6rYduruX84J8q3ItmGdtm/Valuetypes" {
+  tick function "readList" on line 19;
+  tick function "showsPrec" on line 19;
+}
+module "solidity-evaluator-0.1.0.0-E6rYduruX84J8q3ItmGdtm/Store" {
+  tick function "readList" on line 20;
+  tick function "showsPrec" on line 20;
+}
+module "solidity-evaluator-0.1.0.0-E6rYduruX84J8q3ItmGdtm/Storage" {
+  tick function "readList" on line 23;
+  tick function "showsPrec" on line 23;
+  tick function "readList" on line 26;
+  tick function "showsPrec" on line 26;
+  tick function "readList" on line 29;
+  tick function "showsPrec" on line 29;
+  tick function "readList" on line 32;
+  tick function "showsPrec" on line 32;
+}
+module "solidity-evaluator-0.1.0.0-E6rYduruX84J8q3ItmGdtm/Statements" {
+  tick function "readList" on line 27;
+  tick function "showsPrec" on line 27;
+  tick function "readList" on line 30;
+  tick function "showsPrec" on line 30;
+}
+module "solidity-evaluator-0.1.0.0-E6rYduruX84J8q3ItmGdtm/Solidity_Evaluator" {
+  tick function "readList" on line 33;
+  tick function "showsPrec" on line 33;
+  tick function "readList" on line 37;
+  tick function "showsPrec" on line 37;
+  tick function "readList" on line 42;
+  tick function "showsPrec" on line 42;
+}

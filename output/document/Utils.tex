@@ -1,0 +1,84 @@
+%
+\begin{isabellebody}%
+\setisabellecontext{Utils}%
+%
+\isadelimtheory
+%
+\endisadelimtheory
+%
+\isatagtheory
+\isacommand{theory}\isamarkupfalse%
+\ Utils\isanewline
+\isakeyword{imports}\isanewline
+\ \ Main\isanewline
+\ \ {\isachardoublequoteopen}HOL{\isacharminus}{\kern0pt}Eisbach{\isachardot}{\kern0pt}Eisbach{\isachardoublequoteclose}\isanewline
+\isakeyword{begin}%
+\endisatagtheory
+{\isafoldtheory}%
+%
+\isadelimtheory
+\isanewline
+%
+\endisadelimtheory
+\isanewline
+\isacommand{method}\isamarkupfalse%
+\ solve\ \isakeyword{methods}\ m\ {\isacharequal}{\kern0pt}\ {\isacharparenleft}{\kern0pt}m\ {\isacharsemicolon}{\kern0pt}\ fail{\isacharparenright}{\kern0pt}\isanewline
+\isanewline
+\isacommand{named{\isacharunderscore}{\kern0pt}theorems}\isamarkupfalse%
+\ intros\isanewline
+\isacommand{declare}\isamarkupfalse%
+\ conjI{\isacharbrackleft}{\kern0pt}intros{\isacharbrackright}{\kern0pt}\ impI{\isacharbrackleft}{\kern0pt}intros{\isacharbrackright}{\kern0pt}\ allI{\isacharbrackleft}{\kern0pt}intros{\isacharbrackright}{\kern0pt}\isanewline
+\isacommand{method}\isamarkupfalse%
+\ intros\ {\isacharequal}{\kern0pt}\ {\isacharparenleft}{\kern0pt}rule\ intros{\isacharsemicolon}{\kern0pt}\ intros{\isacharquery}{\kern0pt}{\isacharparenright}{\kern0pt}\isanewline
+\isanewline
+\isacommand{named{\isacharunderscore}{\kern0pt}theorems}\isamarkupfalse%
+\ elims\isanewline
+\isacommand{method}\isamarkupfalse%
+\ elims\ {\isacharequal}{\kern0pt}\ {\isacharparenleft}{\kern0pt}{\isacharparenleft}{\kern0pt}rule\ intros\ {\isacharbar}{\kern0pt}\ erule\ elims{\isacharparenright}{\kern0pt}{\isacharsemicolon}{\kern0pt}\ elims{\isacharquery}{\kern0pt}{\isacharparenright}{\kern0pt}\isanewline
+\isacommand{declare}\isamarkupfalse%
+\ conjE{\isacharbrackleft}{\kern0pt}elims{\isacharbrackright}{\kern0pt}\isanewline
+%
+\isadelimtheory
+\isanewline
+%
+\endisadelimtheory
+%
+\isatagtheory
+\isacommand{end}\isamarkupfalse%
+%
+\endisatagtheory
+{\isafoldtheory}%
+%
+\isadelimtheory
+%
+\endisadelimtheory
+%
+\end{isabellebody}%
+\endinput
+%:%file=/cygdrive/e/Users/billy/Documents/Pc Sync Files/solidity/Utils.thy%:%
+%:%10=1%:%
+%:%11=1%:%
+%:%12=2%:%
+%:%13=3%:%
+%:%14=4%:%
+%:%15=5%:%
+%:%20=5%:%
+%:%23=6%:%
+%:%24=7%:%
+%:%25=7%:%
+%:%26=8%:%
+%:%27=9%:%
+%:%28=9%:%
+%:%29=10%:%
+%:%30=10%:%
+%:%31=11%:%
+%:%32=11%:%
+%:%33=12%:%
+%:%34=13%:%
+%:%35=13%:%
+%:%36=14%:%
+%:%37=14%:%
+%:%38=15%:%
+%:%39=15%:%
+%:%42=16%:%
+%:%47=17%:%

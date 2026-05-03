@@ -1,0 +1,590 @@
+module "solidity-evaluator-0.1.0.0-E6rYduruX84J8q3ItmGdtm:Set" {
+  inside "member" {
+    tick "not (List.member xs x)" on line 23;
+  }
+  inside "insert" {
+    tick "Coset (List.removeAll x xs)" on line 19;
+  }
+  tick function "readList" on line 13;
+  tick function "showsPrec" on line 13;
+}
+module "solidity-evaluator-0.1.0.0-E6rYduruX84J8q3ItmGdtm:ReadShow" {
+  inside "nat_of_digit" {
+    tick "error \"undefined\"" on line 114;
+  }
+  inside "digit_of_nat" {
+    tick "error \"undefined\"" on line 75;
+  }
+  tick function "readL_n_a_t" on line 140;
+}
+module "solidity-evaluator-0.1.0.0-E6rYduruX84J8q3ItmGdtm:Product_Type" {
+  tick function "apsnd" on line 13;
+}
+module "solidity-evaluator-0.1.0.0-E6rYduruX84J8q3ItmGdtm:Orderings" {
+}
+module "solidity-evaluator-0.1.0.0-E6rYduruX84J8q3ItmGdtm:Map" {
+}
+module "solidity-evaluator-0.1.0.0-E6rYduruX84J8q3ItmGdtm:List" {
+  tick function "removeAll" on line 60;
+  inside "tl" {
+    tick "[]" on line 48;
+  }
+  inside "insert" {
+    tick "xs" on line 42;
+  }
+  inside "remdups" {
+    tick "remdups xs" on line 53;
+  }
+  inside "take" {
+    tick "[]" on line 24;
+  }
+  inside "drop" {
+    tick "[]" on line 18;
+  }
+}
+module "solidity-evaluator-0.1.0.0-E6rYduruX84J8q3ItmGdtm:FSet" {
+  tick function "readList" on line 13;
+  tick function "showsPrec" on line 13;
+}
+module "solidity-evaluator-0.1.0.0-E6rYduruX84J8q3ItmGdtm:Finite_Map" {
+  tick function "readList" on line 15;
+  tick function "showsPrec" on line 15;
+}
+module "solidity-evaluator-0.1.0.0-E6rYduruX84J8q3ItmGdtm:Expressions" {
+  inside "ssel" {
+    tick "Nothing" on line 351;
+    tick "env" on line 353;
+    tick "st" on line 353;
+    tick "Nothing" on line 354;
+    tick "(Arith.nat_of_integer (256 :: Integer))" on line 357;
+    tick "Nothing" on line 360;
+    tick "Nothing" on line 361;
+    tick "Nothing" on line 362;
+    tick "env" on line 365;
+    tick "st" on line 365;
+    tick "Nothing" on line 365;
+    tick "Nothing" on line 366;
+    tick "Nothing" on line 368;
+    tick "Nothing" on line 369;
+    tick "Nothing" on line 370;
+    tick "Nothing" on line 371;
+    tick "Nothing" on line 375;
+    tick "env" on line 376;
+    tick "st" on line 376;
+    tick "Nothing" on line 377;
+    tick "Nothing" on line 378;
+  }
+  inside "msel" {
+    tick "Nothing" on line 296;
+    tick "Nothing" on line 297;
+    tick "env" on line 299;
+    tick "st" on line 299;
+    tick "Nothing" on line 300;
+    tick "(Arith.nat_of_integer (256 :: Integer))" on line 303;
+    tick "Nothing" on line 306;
+    tick "Nothing" on line 307;
+    tick "Nothing" on line 308;
+    tick "Nothing" on line 311;
+    tick "Nothing" on line 312;
+    tick "Nothing" on line 314;
+    tick "Nothing" on line 315;
+    tick "Nothing" on line 316;
+    tick "Nothing" on line 317;
+    tick "env" on line 320;
+    tick "st" on line 320;
+    tick "Nothing" on line 321;
+    tick "(Arith.nat_of_integer (256 :: Integer))" on line 324;
+    tick "Nothing" on line 327;
+    tick "Nothing" on line 328;
+    tick "Nothing" on line 329;
+    tick "Nothing" on line 333;
+    tick "Nothing" on line 334;
+    tick "env" on line 335;
+    tick "st" on line 335;
+    tick "Nothing" on line 337;
+    tick "Nothing" on line 338;
+    tick "Nothing" on line 340;
+    tick "Nothing" on line 341;
+    tick "Nothing" on line 342;
+    tick "Nothing" on line 343;
+  }
+  inside "rexp" {
+    tick "Nothing" on line 388;
+    tick "Just (Storage.KMemptr p, Environment.Value types)" on line 392;
+    tick "Just (Storage.KStoptr p, Environment.Value types)" on line 394;
+    tick "Nothing" on line 398;
+    tick "Just (Storage.KValue v, Environment.Memory mTypes)" on line 400;
+    tick "Just (Storage.KStoptr p, Environment.Memory mTypes)" on line 404;
+    tick at position 408:10-419:11;
+    tick at position 426:10-437:11;
+    tick at position 439:10-450:11;
+    tick "types" on line 452;
+    tick "Nothing" on line 457;
+    tick "Nothing" on line 460;
+    tick "Nothing" on line 461;
+    tick "Nothing" on line 464;
+    tick "e" on line 466;
+    tick "Nothing" on line 467;
+    tick "Nothing" on line 470;
+    tick "Nothing" on line 471;
+    tick "Nothing" on line 478;
+    tick "Nothing" on line 481;
+    tick "Nothing" on line 484;
+    tick at position 487:11-505:12;
+    tick "Nothing" on line 507;
+    tick "Nothing" on line 508;
+    tick "Nothing" on line 511;
+    tick "Just (Storage.KStoptr la, Environment.Storage ta)" on line 517;
+  }
+  inside "expr" {
+    tick "Nothing" on line 96;
+    tick "Nothing" on line 139;
+    tick "Environment.Value Valuetypes.TAddr" on line 141;
+    tick at position 147:3-148:44;
+    tick at position 150:3-151:44;
+    tick at position 153:3-163:4;
+    tick "Nothing" on line 166;
+    tick "Nothing" on line 169;
+    tick "Nothing" on line 172;
+    tick "Nothing" on line 175;
+    tick "Nothing" on line 176;
+    tick "Nothing" on line 177;
+    tick "Nothing" on line 178;
+    tick "Nothing" on line 180;
+    tick "Nothing" on line 181;
+    tick "Nothing" on line 182;
+    tick "Nothing" on line 183;
+    tick "Nothing" on line 187;
+    tick "Nothing" on line 190;
+    tick "Nothing" on line 193;
+    tick "Nothing" on line 196;
+    tick "Nothing" on line 197;
+    tick "Nothing" on line 198;
+    tick "Nothing" on line 199;
+    tick "Nothing" on line 201;
+    tick "Nothing" on line 202;
+    tick "Nothing" on line 203;
+    tick "Nothing" on line 204;
+    tick "Nothing" on line 208;
+    tick "Nothing" on line 211;
+    tick "Nothing" on line 214;
+    tick "Nothing" on line 217;
+    tick "Nothing" on line 218;
+    tick "Nothing" on line 219;
+    tick "Nothing" on line 220;
+    tick "Nothing" on line 222;
+    tick "Nothing" on line 223;
+    tick "Nothing" on line 224;
+    tick "Nothing" on line 225;
+    tick "Nothing" on line 229;
+    tick "Nothing" on line 232;
+    tick "Nothing" on line 235;
+    tick "Nothing" on line 238;
+    tick "Nothing" on line 239;
+    tick "Nothing" on line 240;
+    tick "Nothing" on line 241;
+    tick "Nothing" on line 243;
+    tick "Nothing" on line 244;
+    tick "Nothing" on line 245;
+    tick "Nothing" on line 246;
+    tick "Nothing" on line 250;
+    tick "Nothing" on line 253;
+    tick "Nothing" on line 256;
+    tick "Nothing" on line 259;
+    tick "Nothing" on line 260;
+    tick "Nothing" on line 261;
+    tick "Nothing" on line 262;
+    tick "Nothing" on line 264;
+    tick "Nothing" on line 265;
+    tick "Nothing" on line 266;
+    tick "Nothing" on line 267;
+    tick at position 270:3-289:4;
+  }
+  inside "lexp" {
+    tick "Nothing" on line 529;
+    tick "Nothing" on line 535;
+    tick "Nothing" on line 538;
+    tick "Nothing" on line 539;
+    tick "Nothing" on line 542;
+    tick "e" on line 544;
+    tick "Nothing" on line 545;
+    tick "Nothing" on line 548;
+    tick at position 551:11-559:12;
+    tick "Nothing" on line 561;
+    tick "Nothing" on line 562;
+    tick "Nothing" on line 565;
+  }
+  tick function "readList" on line 30;
+  tick function "showsPrec" on line 30;
+  tick function "readList" on line 28;
+  tick function "showsPrec" on line 28;
+  tick function "readList" on line 33;
+  tick function "showsPrec" on line 33;
+}
+module "solidity-evaluator-0.1.0.0-E6rYduruX84J8q3ItmGdtm:Environment" {
+  tick function "readList" on line 21;
+  tick function "showsPrec" on line 21;
+  tick function "readList" on line 24;
+  tick function "showsPrec" on line 24;
+  tick function "readList" on line 27;
+  tick function "showsPrec" on line 27;
+}
+module "solidity-evaluator-0.1.0.0-E6rYduruX84J8q3ItmGdtm:Declarations" {
+  inside "decl" {
+    tick "env" on line 40;
+    tick "st" on line 40;
+    tick "Nothing" on line 41;
+    tick "Nothing" on line 44;
+    tick "Nothing" on line 48;
+    tick "Nothing" on line 49;
+    tick "Nothing" on line 50;
+    tick "Nothing" on line 51;
+    tick "(Environment.Value t)" on line 54;
+    tick "(Storage.KValue (Valuetypes.ival t))" on line 54;
+    tick "Nothing" on line 58;
+    tick "Nothing" on line 59;
+    tick "(Environment.Memory (Storage.MTArray x t))" on line 61;
+    tick "(Storage.KMemptr p)" on line 62;
+    tick "Nothing" on line 65;
+    tick "Nothing" on line 66;
+    tick "p" on line 73;
+    tick "(Expressions.storage st)" on line 73;
+    tick "Nothing" on line 75;
+    tick "(Environment.Memory (Storage.MTArray x t))" on line 78;
+    tick "(Storage.KMemptr l)" on line 79;
+    tick "Nothing" on line 83;
+    tick "Nothing" on line 84;
+    tick function "l" on line 90;
+    tick "(Environment.Memory (Storage.MTArray x t))" on line 92;
+    tick "(Storage.KMemptr l)" on line 93;
+    tick "st" on line 95;
+    tick "Nothing" on line 96;
+    tick "Nothing" on line 97;
+    tick "Nothing" on line 98;
+    tick "(Environment.Storage (Storage.STArray x t))" on line 100;
+    tick "(Storage.KStoptr p)" on line 101;
+    tick at position 104:3-111:9;
+    tick at position 113:3-120:4;
+    tick at position 122:3-129:9;
+    tick "Nothing" on line 130;
+    tick "Nothing" on line 131;
+  }
+}
+module "solidity-evaluator-0.1.0.0-E6rYduruX84J8q3ItmGdtm:Arith" {
+  inside "bit_cut_integer" {
+    tick "(2 :: Integer)" on line 231;
+    tick "negate r - s" on line 233;
+  }
+  inside "divmod_integer" {
+    tick "(0 :: Integer)" on line 205;
+    tick "(negate r, (0 :: Integer))" on line 211;
+    tick "negate r - (1 :: Integer)" on line 212;
+    tick at position 214:17-223:36;
+  }
+  tick function "readList" on line 22;
+  tick function "showsPrec" on line 22;
+  tick function "readList" on line 24;
+  tick function "showsPrec" on line 24;
+  tick function "readList" on line 91;
+  tick function "showsPrec" on line 91;
+  tick function "less" on line 148;
+  tick function "zero" on line 59;
+  tick function "plus" on line 48;
+  tick function "less" on line 164;
+}
+module "solidity-evaluator-0.1.0.0-E6rYduruX84J8q3ItmGdtm:AList" {
+}
+module "solidity-evaluator-0.1.0.0-E6rYduruX84J8q3ItmGdtm:Accounts" {
+  tick function "emptyAccount" on line 72;
+  inside "subBalance" {
+    tick "(Arith.nat_of_integer (256 :: Integer))" on line 29;
+    tick "Nothing" on line 32;
+    tick "Nothing" on line 33;
+    tick "Nothing" on line 34;
+    tick "Nothing" on line 41;
+    tick "Nothing" on line 44;
+    tick "Nothing" on line 45;
+  }
+  inside "addBalance" {
+    tick "Nothing" on line 57;
+  }
+  inside "transfer" {
+    tick "Nothing" on line 67;
+  }
+}
+module "solidity-evaluator-0.1.0.0-E6rYduruX84J8q3ItmGdtm:Valuetypes" {
+  inside "convert" {
+    tick "Nothing" on line 161;
+    tick "TUInt b2" on line 163;
+    tick "Nothing" on line 163;
+    tick "(if Arith.less_nat b1 b2 then Just (v, TSInt b2) else Nothing)" on line 165;
+    tick "Just (v, TBool)" on line 166;
+    tick "TAddr" on line 167;
+    tick "Nothing" on line 168;
+    tick "Nothing" on line 169;
+    tick "Nothing" on line 170;
+    tick "Nothing" on line 171;
+    tick "Nothing" on line 172;
+    tick "Nothing" on line 173;
+    tick "Nothing" on line 174;
+    tick "Nothing" on line 175;
+    tick "Nothing" on line 176;
+    tick "Nothing" on line 177;
+    tick "Nothing" on line 178;
+  }
+  inside "vtand" {
+    tick "Nothing" on line 152;
+    tick "Nothing" on line 153;
+    tick "Nothing" on line 154;
+    tick "Nothing" on line 155;
+    tick "Nothing" on line 156;
+    tick "Nothing" on line 157;
+  }
+  tick function "vtor" on line 133;
+  inside "plift" {
+    tick "Nothing" on line 103;
+    tick "Nothing" on line 109;
+    tick "Nothing" on line 110;
+    tick "Nothing" on line 111;
+    tick "Nothing" on line 112;
+    tick "Nothing" on line 113;
+    tick "Nothing" on line 114;
+    tick "Nothing" on line 115;
+  }
+  inside "olift" {
+    tick "Nothing" on line 69;
+    tick "Nothing" on line 75;
+    tick "Nothing" on line 76;
+    tick "Nothing" on line 77;
+    tick "Nothing" on line 78;
+    tick "Nothing" on line 79;
+    tick "Nothing" on line 80;
+    tick "Nothing" on line 81;
+  }
+  tick function "readList" on line 19;
+  tick function "showsPrec" on line 19;
+}
+module "solidity-evaluator-0.1.0.0-E6rYduruX84J8q3ItmGdtm:Utils" {
+  inside "itera" {
+    tick "Nothing" on line 24;
+  }
+}
+module "solidity-evaluator-0.1.0.0-E6rYduruX84J8q3ItmGdtm:Sublist" {
+}
+module "solidity-evaluator-0.1.0.0-E6rYduruX84J8q3ItmGdtm:Stringa" {
+  tick function "readList" on line 17;
+  tick function "showsPrec" on line 17;
+  tick function "less" on line 31;
+}
+module "solidity-evaluator-0.1.0.0-E6rYduruX84J8q3ItmGdtm:Store" {
+  inside "allocate" {
+    tick "ReadShow.showL_n_a_t ntop" on line 40;
+  }
+  tick function "readList" on line 20;
+  tick function "showsPrec" on line 20;
+}
+module "solidity-evaluator-0.1.0.0-E6rYduruX84J8q3ItmGdtm:Storage" {
+  inside "minitRec" {
+    tick "(MPointer loc)" on line 142;
+    tick "(MValue (Valuetypes.ival t))" on line 145;
+  }
+  inside "cpm2srec" {
+    tick "Nothing" on line 73;
+    tick "Nothing" on line 74;
+    tick "Nothing" on line 84;
+    tick "Nothing" on line 86;
+  }
+  inside "copyRec" {
+    tick "t" on line 50;
+    tick "Nothing" on line 52;
+  }
+  inside "cps2mrec" {
+    tick "t" on line 119;
+    tick "Nothing" on line 121;
+  }
+  tick function "readList" on line 23;
+  tick function "showsPrec" on line 23;
+  tick function "readList" on line 26;
+  tick function "showsPrec" on line 26;
+  tick function "readList" on line 29;
+  tick function "showsPrec" on line 29;
+  tick function "readList" on line 32;
+  tick function "showsPrec" on line 32;
+}
+module "solidity-evaluator-0.1.0.0-E6rYduruX84J8q3ItmGdtm:Statements" {
+  inside "assign" {
+    tick "Nothing" on line 47;
+    tick "Nothing" on line 50;
+    tick "Nothing" on line 53;
+    tick "Nothing" on line 60;
+    tick "Nothing" on line 61;
+    tick "Nothing" on line 62;
+    tick "Nothing" on line 64;
+    tick "Nothing" on line 67;
+    tick "Nothing" on line 74;
+    tick "Nothing" on line 75;
+    tick "Nothing" on line 76;
+    tick "Nothing" on line 79;
+    tick "Nothing" on line 81;
+    tick "Nothing" on line 84;
+    tick "Nothing" on line 90;
+    tick "Nothing" on line 91;
+    tick "Nothing" on line 92;
+    tick "Nothing" on line 95;
+    tick "Nothing" on line 96;
+    tick at position 103:11-114:12;
+    tick "Nothing" on line 124;
+    tick "Nothing" on line 128;
+    tick "Nothing" on line 129;
+    tick "Nothing" on line 130;
+    tick "Nothing" on line 131;
+    tick "Nothing" on line 134;
+    tick "Nothing" on line 135;
+    tick "Nothing" on line 142;
+    tick at position 147:11-150:20;
+    tick "Nothing" on line 155;
+    tick "Nothing" on line 160;
+    tick at position 165:7-174:8;
+    tick "Nothing" on line 176;
+  }
+  inside "stmt" {
+    tick "e" on line 185;
+    tick "st" on line 185;
+    tick "(Out_of_Gas, gas)" on line 186;
+    tick "lv" on line 190;
+    tick "ex" on line 190;
+    tick "e" on line 190;
+    tick "st" on line 190;
+    tick "(Out_of_Gas, gas)" on line 191;
+    tick "(Error, gas)" on line 193;
+    tick "s1" on line 198;
+    tick "s2" on line 198;
+    tick "e" on line 198;
+    tick "st" on line 198;
+    tick "(Out_of_Gas, gas)" on line 199;
+    tick "(Out_of_Gas, Arith.plus_nat c gas)" on line 205;
+    tick "(Error, Arith.plus_nat c gas)" on line 206;
+    tick "ex" on line 210;
+    tick "s1" on line 210;
+    tick "s2" on line 210;
+    tick "e" on line 210;
+    tick "st" on line 210;
+    tick "(Out_of_Gas, gas)" on line 211;
+    tick "(Error, gas)" on line 213;
+    tick "ex" on line 224;
+    tick "s0" on line 224;
+    tick "e" on line 224;
+    tick "st" on line 224;
+    tick "(Out_of_Gas, gas)" on line 225;
+    tick "(Error, gas)" on line 227;
+    tick "(Error, gas)" on line 229;
+    tick "(Error, gas)" on line 231;
+    tick "ex" on line 235;
+    tick "s0" on line 235;
+    tick "e" on line 235;
+    tick "st" on line 235;
+    tick "(Out_of_Gas, Arith.plus_nat c gas)" on line 248;
+    tick "(Error, Arith.plus_nat c gas)" on line 249;
+    tick "(Error, gas)" on line 253;
+    tick "(Error, gas)" on line 254;
+    tick "(Error, gas)" on line 255;
+    tick "(Error, gas)" on line 256;
+    tick "(Error, gas)" on line 257;
+    tick "ad" on line 261;
+    tick "ex" on line 261;
+    tick "e" on line 261;
+    tick "st" on line 261;
+    tick "(Out_of_Gas, gas)" on line 262;
+    tick "(Error, gas)" on line 264;
+    tick "(Error, gas)" on line 269;
+    tick "id0" on line 276;
+    tick "tp" on line 276;
+    tick "ex" on line 276;
+    tick "s" on line 276;
+    tick "e" on line 276;
+    tick "st" on line 276;
+    tick "(Out_of_Gas, gas)" on line 277;
+    tick "(Error, Arith.one_nat)" on line 279;
+  }
+  tick function "readList" on line 27;
+  tick function "showsPrec" on line 27;
+  tick function "readList" on line 30;
+  tick function "showsPrec" on line 30;
+}
+module "solidity-evaluator-0.1.0.0-E6rYduruX84J8q3ItmGdtm:Solidity_Evaluator" {
+  inside "string_of_result" {
+    tick "Arith.zero" on line 504;
+    tick "(Arith.one, \"Computation ran out of gas.\\n\")" on line 505;
+    tick "(Arith.numeral (Arith.Bit0 Arith.One), \"ERROR\\n\")" on line 506;
+  }
+  inside "init_A_c_c_o_u_n_t" {
+    tick "Accounts.emptyAccount" on line 460;
+  }
+  tick function "failure" on line 220;
+  inside "go_S_t_o_r_a_g_e" {
+    tick "\"true\"" on line 205;
+    tick "\"false\"" on line 205;
+    tick at position 209:3-212:6;
+  }
+  inside "dumpSingle_S_t_o_r_a_g_e" {
+    tick "failure" on line 241;
+    tick "failure" on line 242;
+    tick "failure" on line 245;
+  }
+  inside "dump_S_t_o_r_a_g_e" {
+    tick "str" on line 298;
+  }
+  inside "dumprec_M_e_m_o_r_y" {
+    tick "failure" on line 308;
+    tick "failure" on line 311;
+    tick "failure" on line 323;
+  }
+  inside "getValue_E_n_v_i_r_o_n_m_e_n_t" {
+    tick "failure" on line 346;
+    tick "failure" on line 353;
+    tick "failure" on line 354;
+    tick at position 357:11-363:12;
+    tick at position 365:11-369:12;
+    tick "failure" on line 371;
+    tick at position 375:11-380:12;
+    tick "failure" on line 383;
+    tick "failure" on line 386;
+    tick "failure" on line 387;
+    tick at position 390:11-394:12;
+    tick "failure" on line 396;
+    tick at position 398:7-420:8;
+  }
+  inside "loadRec_S_t_o_r_a_g_e" {
+    tick "List.foldr (\\ (k, a) -> loadRec_S_t_o_r_a_g_e (Store.hash loc k) a) dat sto" on line 57;
+  }
+  inside "load_S_t_o_r_a_g_e" {
+    tick "Store.push (ReadShow.showL_b_o_o_l b)" on line 86;
+    tick "Store.push (ReadShow.showL_i_n_t i)" on line 87;
+    tick "Store.push ad" on line 88;
+  }
+  inside "loadsimple_E_n_v_i_r_o_n_m_e_n_t" {
+    tick at position 179:19-181:20;
+  }
+  inside "eval" {
+    tick "Statements.Out_of_Gas" on line 494;
+    tick "Statements.Error" on line 495;
+  }
+  inside "main_stub" {
+    tick at position 511:3-513:53;
+    tick at position 519:3-522:11;
+    tick at position 524:3-527:11;
+    tick at position 529:3-532:11;
+    tick at position 534:3-537:11;
+    tick at position 539:3-542:11;
+    tick at position 544:3-547:11;
+  }
+  tick function "readList" on line 33;
+  tick function "showsPrec" on line 33;
+  tick function "readList" on line 37;
+  tick function "showsPrec" on line 37;
+  tick function "readList" on line 42;
+  tick function "showsPrec" on line 42;
+}
+module "Main" {
+}
+

@@ -1,0 +1,155 @@
+%
+\begin{isabellebody}%
+\setisabellecontext{Solidity{\isacharunderscore}{\kern0pt}Symbex}%
+%
+\isadelimdocument
+%
+\endisadelimdocument
+%
+\isatagdocument
+%
+\isamarkupsection{Towards a Setup for Symbolic Evaluation of Solidity%
+}
+\isamarkuptrue%
+%
+\endisatagdocument
+{\isafolddocument}%
+%
+\isadelimdocument
+%
+\endisadelimdocument
+%
+\begin{isamarkuptext}%
+In this chapter, we lay out the foundations for a tactic for executing 
+  Solidity statements and expressions symbolically.%
+\end{isamarkuptext}\isamarkuptrue%
+%
+\isadelimtheory
+%
+\endisadelimtheory
+%
+\isatagtheory
+\isacommand{theory}\isamarkupfalse%
+\ Solidity{\isacharunderscore}{\kern0pt}Symbex\isanewline
+\isakeyword{imports}\isanewline
+\ \ Main\isanewline
+\ \ {\isachardoublequoteopen}HOL{\isacharminus}{\kern0pt}Eisbach{\isachardot}{\kern0pt}Eisbach{\isachardoublequoteclose}\isanewline
+\isakeyword{begin}%
+\endisatagtheory
+{\isafoldtheory}%
+%
+\isadelimtheory
+%
+\endisadelimtheory
+\isanewline
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ string{\isacharunderscore}{\kern0pt}literal{\isacharunderscore}{\kern0pt}cat{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}a{\isacharplus}{\kern0pt}b\ {\isacharequal}{\kern0pt}\ String{\isachardot}{\kern0pt}implode\ {\isacharparenleft}{\kern0pt}{\isacharparenleft}{\kern0pt}String{\isachardot}{\kern0pt}explode\ a{\isacharparenright}{\kern0pt}\ {\isacharat}{\kern0pt}\ {\isacharparenleft}{\kern0pt}String{\isachardot}{\kern0pt}explode\ b{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}{\kern0pt}metis\ String{\isachardot}{\kern0pt}implode{\isacharunderscore}{\kern0pt}explode{\isacharunderscore}{\kern0pt}eq\ plus{\isacharunderscore}{\kern0pt}literal{\isachardot}{\kern0pt}rep{\isacharunderscore}{\kern0pt}eq{\isacharparenright}{\kern0pt}%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ string{\isacharunderscore}{\kern0pt}literal{\isacharunderscore}{\kern0pt}conv{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}{\isacharparenleft}{\kern0pt}map\ String{\isachardot}{\kern0pt}ascii{\isacharunderscore}{\kern0pt}of\ y\ {\isacharequal}{\kern0pt}\ y{\isacharparenright}{\kern0pt}\ {\isasymLongrightarrow}\ \ {\isacharparenleft}{\kern0pt}x\ {\isacharequal}{\kern0pt}\ String{\isachardot}{\kern0pt}implode\ y{\isacharparenright}{\kern0pt}\ {\isacharequal}{\kern0pt}\ {\isacharparenleft}{\kern0pt}String{\isachardot}{\kern0pt}explode\ x\ {\isacharequal}{\kern0pt}\ y{\isacharparenright}{\kern0pt}\ {\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ auto%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemmas}\isamarkupfalse%
+\ string{\isacharunderscore}{\kern0pt}literal{\isacharunderscore}{\kern0pt}opt\ {\isacharequal}{\kern0pt}\ Literal{\isachardot}{\kern0pt}rep{\isacharunderscore}{\kern0pt}eq\ zero{\isacharunderscore}{\kern0pt}literal{\isachardot}{\kern0pt}rep{\isacharunderscore}{\kern0pt}eq\ plus{\isacharunderscore}{\kern0pt}literal{\isachardot}{\kern0pt}rep{\isacharunderscore}{\kern0pt}eq\isanewline
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ string{\isacharunderscore}{\kern0pt}literal{\isacharunderscore}{\kern0pt}cat\ \ string{\isacharunderscore}{\kern0pt}literal{\isacharunderscore}{\kern0pt}conv\isanewline
+\isanewline
+\isacommand{named{\isacharunderscore}{\kern0pt}theorems}\isamarkupfalse%
+\ solidity{\isacharunderscore}{\kern0pt}symbex\isanewline
+\isacommand{method}\isamarkupfalse%
+\ solidity{\isacharunderscore}{\kern0pt}symbex\ \isakeyword{declares}\ solidity{\isacharunderscore}{\kern0pt}symbex\ {\isacharequal}{\kern0pt}\isanewline
+\ \ \ {\isacharparenleft}{\kern0pt}{\isacharparenleft}{\kern0pt}simp\ add{\isacharcolon}{\kern0pt}solidity{\isacharunderscore}{\kern0pt}symbex\ cong{\isacharcolon}{\kern0pt}unit{\isachardot}{\kern0pt}case{\isacharparenright}{\kern0pt}{\isacharcomma}{\kern0pt}\ {\isacharparenleft}{\kern0pt}simp\ add{\isacharcolon}{\kern0pt}string{\isacharunderscore}{\kern0pt}literal{\isacharunderscore}{\kern0pt}opt{\isacharparenright}{\kern0pt}{\isacharquery}{\kern0pt}{\isacharsemicolon}{\kern0pt}\ {\isacharparenleft}{\kern0pt}code{\isacharunderscore}{\kern0pt}simp{\isacharbar}{\kern0pt}simp\ add{\isacharcolon}{\kern0pt}string{\isacharunderscore}{\kern0pt}literal{\isacharunderscore}{\kern0pt}opt{\isacharparenright}{\kern0pt}{\isacharplus}{\kern0pt}{\isacharparenright}{\kern0pt}\isanewline
+\isanewline
+\isacommand{declare}\isamarkupfalse%
+\ Let{\isacharunderscore}{\kern0pt}def\ {\isacharbrackleft}{\kern0pt}solidity{\isacharunderscore}{\kern0pt}symbex{\isacharbrackright}{\kern0pt}\isanewline
+\ \ \ \ \ \ \ \ o{\isacharunderscore}{\kern0pt}def\ {\isacharbrackleft}{\kern0pt}solidity{\isacharunderscore}{\kern0pt}symbex{\isacharbrackright}{\kern0pt}\isanewline
+%
+\isadelimtheory
+\isanewline
+%
+\endisadelimtheory
+%
+\isatagtheory
+\isacommand{end}\isamarkupfalse%
+%
+\endisatagtheory
+{\isafoldtheory}%
+%
+\isadelimtheory
+%
+\endisadelimtheory
+%
+\end{isabellebody}%
+\endinput
+%:%file=/cygdrive/e/Users/billy/Documents/Pc Sync Files/solidity/Solidity_Symbex.thy%:%
+%:%11=1%:%
+%:%23=3%:%
+%:%24=4%:%
+%:%32=6%:%
+%:%33=6%:%
+%:%34=7%:%
+%:%35=8%:%
+%:%36=9%:%
+%:%37=10%:%
+%:%44=10%:%
+%:%45=11%:%
+%:%46=12%:%
+%:%47=12%:%
+%:%50=13%:%
+%:%54=13%:%
+%:%55=13%:%
+%:%60=13%:%
+%:%63=14%:%
+%:%64=15%:%
+%:%65=16%:%
+%:%66=16%:%
+%:%69=17%:%
+%:%73=17%:%
+%:%74=17%:%
+%:%79=17%:%
+%:%82=18%:%
+%:%83=19%:%
+%:%84=19%:%
+%:%85=20%:%
+%:%86=21%:%
+%:%87=22%:%
+%:%88=22%:%
+%:%89=23%:%
+%:%90=23%:%
+%:%91=24%:%
+%:%92=25%:%
+%:%93=26%:%
+%:%94=26%:%
+%:%95=27%:%
+%:%98=28%:%
+%:%103=29%:%
